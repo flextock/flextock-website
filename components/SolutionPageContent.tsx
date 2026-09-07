@@ -37,25 +37,25 @@ export function SolutionPageContent({ slug }: { slug: string }) {
 
   return (
     <main className="min-h-screen bg-flextock-navy text-flextock-foreground">
-      <section className="px-6 pb-24 pt-20 lg:px-10 lg:pb-32 lg:pt-28">
-        <div className="mx-auto grid max-w-7xl items-end gap-12 lg:grid-cols-[1fr_0.85fr] lg:gap-24">
+      <section className="px-5 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-20 lg:px-10 lg:pb-32 lg:pt-28">
+        <div className="mx-auto grid max-w-7xl items-end gap-10 lg:grid-cols-[1fr_0.85fr] lg:gap-24">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
           >
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-flextock-neon sm:text-xs sm:tracking-[0.2em]">
               {solution.title} · {content.eyebrow}
             </p>
-            <h1 className="mt-7 max-w-3xl text-5xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-6xl">
+            <h1 className="mt-5 max-w-3xl text-[2rem] font-medium leading-[1.05] tracking-[-0.05em] sm:mt-7 sm:text-5xl sm:leading-[0.95] sm:tracking-[-0.06em] lg:text-6xl">
               {detail.title}
             </h1>
-            <p className="mt-8 max-w-2xl text-xl leading-8 text-flextock-muted">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-flextock-muted sm:mt-8 sm:text-xl sm:leading-8">
               {detail.intro}
             </p>
             <Link
               href="/quote"
-              className="mt-10 inline-flex items-center gap-3 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground"
+              className="mt-8 inline-flex min-h-11 items-center gap-3 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground sm:mt-10"
             >
               {content.cta}
               <ArrowRight size={16} className="rtl:rotate-180" />
@@ -72,7 +72,7 @@ export function SolutionPageContent({ slug }: { slug: string }) {
               initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.65 }}
-              className="relative aspect-[4/5]"
+              className="relative aspect-[4/5] max-h-[22rem] sm:max-h-none"
             >
               <Image
                 src={image.src}
@@ -86,7 +86,7 @@ export function SolutionPageContent({ slug }: { slug: string }) {
             {sourceDetail.secondaryImages?.map((secondaryImage) => (
               <div
                 key={secondaryImage.src}
-                className="relative aspect-[4/5] bg-flextock-navy"
+                className="relative hidden aspect-[4/5] bg-flextock-navy sm:block"
               >
                 <Image
                   src={secondaryImage.src}
@@ -101,16 +101,16 @@ export function SolutionPageContent({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="border-y border-flextock-line bg-flextock-panel px-6 py-24 lg:px-10 lg:py-32">
-        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.75fr_1.25fr]">
+      <section className="border-y border-flextock-line bg-flextock-panel px-5 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-32">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-flextock-neon sm:text-xs sm:tracking-[0.2em]">
               {detail.problem.eyebrow}
             </p>
-            <h2 className="mt-7 max-w-xl text-4xl font-medium leading-[0.98] tracking-[-0.05em] sm:text-5xl">
+            <h2 className="mt-5 max-w-xl text-3xl font-medium leading-[1.05] tracking-[-0.04em] sm:mt-7 sm:text-4xl sm:leading-[0.98] sm:tracking-[-0.05em] lg:text-5xl">
               {detail.problem.title}
             </h2>
-            <p className="mt-6 max-w-lg text-lg leading-8 text-flextock-muted">
+            <p className="mt-5 max-w-lg text-base leading-7 text-flextock-muted sm:mt-6 sm:text-lg sm:leading-8">
               {detail.problem.description}
             </p>
           </div>
@@ -132,12 +132,12 @@ export function SolutionPageContent({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10 lg:py-32">
+      <section className="px-5 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-flextock-neon sm:text-xs sm:tracking-[0.2em]">
             {content.howItWorks}
           </p>
-          <div className="mt-12 border-y border-flextock-line">
+          <div className="mt-8 border-y border-flextock-line sm:mt-12">
             <div
               className="grid border-b border-flextock-line sm:grid-cols-2 lg:grid-cols-4"
               role="tablist"
@@ -151,7 +151,7 @@ export function SolutionPageContent({ slug }: { slug: string }) {
                   aria-selected={activeStep === stepIndex}
                   aria-controls="solution-step-panel"
                   onClick={() => setActiveStep(stepIndex)}
-                  className={`border-b border-flextock-line px-4 py-5 text-start transition-colors last:border-b-0 sm:border-l sm:first:border-l-0 lg:border-b-0 ${
+                  className={`min-h-11 border-b border-flextock-line px-4 py-4 text-start transition-colors last:border-b-0 sm:border-s sm:py-5 sm:first:border-s-0 lg:border-b-0 ${
                     activeStep === stepIndex
                       ? "bg-flextock-panelStrong text-flextock-foreground"
                       : "text-flextock-muted hover:text-flextock-foreground"
@@ -160,7 +160,7 @@ export function SolutionPageContent({ slug }: { slug: string }) {
                   <span className="font-mono text-xs text-flextock-neon">
                     0{stepIndex + 1}
                   </span>
-                  <span className="mt-8 block text-sm font-medium leading-6">
+                  <span className="mt-4 block text-sm font-medium leading-6 sm:mt-8">
                     {step.title}
                   </span>
                 </button>

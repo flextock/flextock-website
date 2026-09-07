@@ -56,20 +56,20 @@ export function ContentPage({ pageKey }: { pageKey: ContentPageKey }) {
 
   return (
     <main className="min-h-screen bg-flextock-navy text-flextock-foreground">
-      <section className="px-6 pb-24 pt-20 lg:px-10 lg:pb-32 lg:pt-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1fr_0.8fr] lg:gap-24">
+      <section className="px-5 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-20 lg:px-10 lg:pb-32 lg:pt-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.8fr] lg:gap-24">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
           >
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-flextock-neon sm:text-xs sm:tracking-[0.2em]">
               {page.eyebrow}
             </p>
-            <h1 className="mt-7 max-w-4xl text-5xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-6xl">
+            <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.05] tracking-[-0.05em] sm:mt-7 sm:text-5xl sm:leading-[0.95] sm:tracking-[-0.06em] lg:text-6xl">
               {page.title}
             </h1>
-            <p className="mt-8 max-w-2xl text-xl leading-8 text-flextock-muted">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-flextock-muted sm:mt-8 sm:text-xl sm:leading-8">
               {page.description}
             </p>
           </motion.div>
@@ -96,7 +96,7 @@ export function ContentPage({ pageKey }: { pageKey: ContentPageKey }) {
 
       <SupportingVisual pageKey={pageKey} />
 
-      <section className="border-y border-flextock-line bg-flextock-panel px-6 py-24 lg:px-10 lg:py-32">
+      <section className="border-y border-flextock-line bg-flextock-panel px-5 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="border-y border-flextock-line">
             {sections.map((section, index) => (
@@ -125,7 +125,7 @@ export function ContentPage({ pageKey }: { pageKey: ContentPageKey }) {
                     {section.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-center gap-3 text-sm text-flextock-foreground"
+                        className="flex items-start gap-3 text-sm text-flextock-foreground"
                       >
                         <Check size={16} className="text-flextock-neon" />
                         {item}
@@ -235,19 +235,19 @@ export function ContentPage({ pageKey }: { pageKey: ContentPageKey }) {
         </div>
       </section>
 
-      <section className="px-6 py-24 lg:px-10 lg:py-32">
-            <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 border-y border-flextock-line bg-flextock-panel p-8 sm:p-12 md:flex-row md:items-center">
+      <section className="px-5 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-32">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 border-y border-flextock-line bg-flextock-panel p-6 sm:p-10 md:flex-row md:items-center lg:p-12">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-flextock-neon">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-flextock-neon sm:text-xs">
               {ctaContent.eyebrow}
             </p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-medium tracking-[-0.04em] sm:text-4xl">
+            <h2 className="mt-4 max-w-2xl text-2xl font-medium tracking-[-0.04em] sm:text-3xl lg:text-4xl">
               {ctaContent.title}
             </h2>
           </div>
           <Link
             href="/quote"
-                className="inline-flex w-fit shrink-0 items-center gap-3 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground"
+            className="inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-3 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground sm:w-fit"
           >
             {siteCopy.primaryCta}
             <ArrowRight size={16} className="rtl:rotate-180" />

@@ -80,34 +80,37 @@ export function OperatingSystemShowcase() {
       className="relative bg-flextock-navy"
     >
       <div className="mx-auto grid max-w-7xl lg:grid-cols-[0.86fr_1.14fr] lg:gap-24">
-        <div className="relative lg:sticky lg:top-[4.5rem] lg:h-[calc(100vh-4.5rem)] lg:py-10">
-          <div className="relative h-[28rem] overflow-hidden bg-flextock-panel lg:h-full">
-            <div className="flex h-full flex-col justify-between p-6 md:p-10">
-              <div className="flex items-center justify-between border-b border-flextock-line pb-5">
-                <span className="font-mono text-xs uppercase tracking-[0.18em] text-flextock-muted">
+        <div className="sticky top-[4.5rem] z-20 border-b border-flextock-line bg-flextock-navy/95 backdrop-blur-md lg:border-b-0 lg:bg-transparent lg:backdrop-blur-none lg:h-[calc(100vh-4.5rem)] lg:py-10">
+          <div className="relative overflow-hidden bg-flextock-panel lg:h-full">
+            <div className="flex flex-col justify-between gap-4 p-4 sm:p-6 lg:h-full lg:gap-0 lg:p-10">
+              <div className="flex items-center justify-between border-b border-flextock-line pb-3 lg:pb-5">
+                <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-flextock-muted sm:text-xs sm:tracking-[0.18em]">
                   {localizedContent.systemLabel}
                 </span>
                 <span className="font-mono text-xs text-flextock-neon">
                   {currentStep.number}
                 </span>
               </div>
-              <div className="py-10">
-                <motion.p
-                  key={currentStep.visualValue}
-                  initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-7xl font-medium tracking-[-0.07em] text-flextock-foreground md:text-8xl"
-                >
-                  {currentStep.visualValue}
-                </motion.p>
-                <p className="mt-2 text-xs uppercase tracking-[0.16em] text-flextock-muted">
-                  {currentStep.visualUnit}
-                </p>
-                <p className="text-xs uppercase tracking-[0.2em] text-flextock-neon">
-                  {currentStep.visualLabel}
-                </p>
+
+              <div className="grid grid-cols-[1fr_auto] items-end gap-4 py-2 lg:block lg:py-10">
+                <div>
+                  <motion.p
+                    key={currentStep.visualValue}
+                    initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-4xl font-medium tracking-[-0.06em] text-flextock-foreground sm:text-5xl lg:text-7xl lg:tracking-[-0.07em] xl:text-8xl"
+                  >
+                    {currentStep.visualValue}
+                  </motion.p>
+                  <p className="mt-1 text-[0.65rem] uppercase tracking-[0.14em] text-flextock-muted sm:mt-2 sm:text-xs sm:tracking-[0.16em]">
+                    {currentStep.visualUnit}
+                  </p>
+                  <p className="text-[0.65rem] uppercase tracking-[0.16em] text-flextock-neon sm:text-xs sm:tracking-[0.2em]">
+                    {currentStep.visualLabel}
+                  </p>
+                </div>
                 <div
-                  className="mt-10 flex h-28 items-end gap-2 border-y border-flextock-line py-4"
+                  className="hidden h-20 w-28 items-end gap-1 border-y border-flextock-line py-3 sm:flex lg:mt-10 lg:h-28 lg:w-auto lg:gap-2 lg:py-4"
                   aria-label={`${currentStep.visualLabel} signal`}
                 >
                   {signalBars.map((height, index) => (
@@ -125,14 +128,16 @@ export function OperatingSystemShowcase() {
                   ))}
                 </div>
               </div>
+
               <div>
-                <div className="flex items-center justify-between gap-4 text-xs text-flextock-muted">
+                <div className="flex items-center justify-between gap-4 text-[0.65rem] text-flextock-muted sm:text-xs">
                   <span>{localizedContent.signalLabel}</span>
                   <span>
-                    {currentStep.number} / {String(localizedSteps.length).padStart(2, "0")}
+                    {currentStep.number} /{" "}
+                    {String(localizedSteps.length).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="mt-4 h-px bg-flextock-line">
+                <div className="mt-3 h-px bg-flextock-line lg:mt-4">
                   <motion.div
                     style={{
                       scaleX: progress,
@@ -141,20 +146,37 @@ export function OperatingSystemShowcase() {
                     className="h-px bg-flextock-neon"
                   />
                 </div>
+                <div className="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden">
+                  {localizedSteps.map((step, index) => (
+                    <button
+                      key={step.number}
+                      type="button"
+                      onClick={() => selectStep(index)}
+                      aria-current={activeStep === index ? "step" : undefined}
+                      className={`shrink-0 border px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.12em] transition-colors ${
+                        activeStep === index
+                          ? "border-flextock-neon bg-flextock-neon text-flextock-navy"
+                          : "border-flextock-line text-flextock-muted"
+                      }`}
+                    >
+                      {step.number}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="px-6 py-24 lg:px-0 lg:py-32">
-          <div className="mb-24 max-w-2xl">
-            <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
+        <div className="px-5 py-14 sm:px-6 sm:py-20 lg:px-0 lg:py-32">
+          <div className="mb-12 max-w-2xl sm:mb-16 lg:mb-24">
+            <p className="mb-5 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-flextock-neon sm:mb-6 sm:text-xs sm:tracking-[0.2em]">
               {localizedContent.eyebrow}
             </p>
-            <h2 className="text-4xl font-medium leading-[0.98] tracking-[-0.06em] text-flextock-foreground sm:text-5xl">
+            <h2 className="text-3xl font-medium leading-[1.05] tracking-[-0.05em] text-flextock-foreground sm:text-4xl sm:leading-[0.98] sm:tracking-[-0.06em] lg:text-5xl">
               {localizedContent.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-flextock-muted">
+            <p className="mt-5 text-base leading-7 text-flextock-muted sm:mt-6 sm:text-lg sm:leading-8">
               {localizedContent.description}
             </p>
           </div>
@@ -175,7 +197,7 @@ export function OperatingSystemShowcase() {
                   ref={(element) => {
                     stepRefs.current[index] = element;
                   }}
-                  className={`relative min-h-[78vh] border-s ps-8 pt-2 transition-opacity md:ps-12 ${
+                  className={`relative border-s ps-6 pb-14 pt-2 transition-opacity sm:ps-8 md:ps-12 lg:min-h-[78vh] lg:pb-0 ${
                     isActive
                       ? "border-flextock-neon opacity-100"
                       : "border-flextock-line opacity-45"
@@ -185,10 +207,10 @@ export function OperatingSystemShowcase() {
                     type="button"
                     onClick={() => selectStep(index)}
                     aria-current={isActive ? "step" : undefined}
-                    className="group mb-10 flex items-center gap-4 text-start"
+                    className="group mb-6 flex min-h-11 items-center gap-3 text-start sm:mb-10 sm:gap-4"
                   >
                     <div
-                      className={`flex h-11 w-11 items-center justify-center ${
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center sm:h-11 sm:w-11 ${
                         isActive
                           ? "bg-flextock-neon text-flextock-navy"
                           : "bg-flextock-panelStrong text-flextock-muted"
@@ -197,20 +219,20 @@ export function OperatingSystemShowcase() {
                       <Icon size={20} strokeWidth={1.7} />
                     </div>
                     <div
-                      className={`flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] ${
+                      className={`flex flex-wrap items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.14em] sm:gap-3 sm:text-xs sm:tracking-[0.18em] ${
                         isActive
                           ? "text-flextock-foreground"
                           : "text-flextock-muted"
                       }`}
                     >
                       <span className="font-mono">{step.number}</span>
-                      <span className="h-px w-8 bg-white/20" />
+                      <span className="hidden h-px w-8 bg-white/20 sm:block" />
                       <span>{step.label}</span>
                     </div>
                     <span className="sr-only">View this operating signal</span>
                   </button>
                   <h3
-                    className={`max-w-xl text-4xl font-medium leading-[0.98] tracking-[-0.06em] sm:text-5xl ${
+                    className={`max-w-xl text-2xl font-medium leading-[1.05] tracking-[-0.04em] sm:text-4xl sm:leading-[0.98] sm:tracking-[-0.06em] lg:text-5xl ${
                       isActive
                         ? "text-flextock-foreground"
                         : "text-flextock-muted"
@@ -219,7 +241,7 @@ export function OperatingSystemShowcase() {
                     {step.title}
                   </h3>
                   <p
-                    className={`mt-8 max-w-xl text-lg leading-8 ${
+                    className={`mt-5 max-w-xl text-base leading-7 sm:mt-8 sm:text-lg sm:leading-8 ${
                       isActive
                         ? "text-flextock-foreground"
                         : "text-flextock-muted"

@@ -26,7 +26,7 @@ export const siteConfig = {
   solutionsOverviewLabel: "View all solutions",
   playVideoLabel: "Play video",
   pauseVideoLabel: "Pause video",
-  primaryCta: "Get Quote",
+  primaryCta: "Request pricing",
   secondaryCta: "Explore the platform",
   contactHref: "/quote",
   contactEmail: "info@flextock.com",
@@ -882,7 +882,7 @@ export const ctaContent = {
   title: "Turn operational complexity into momentum.",
   description:
     "Tell us where your business is going. We’ll show you how Flextock can help you get there.",
-  cta: "Get Quote",
+  cta: "Request pricing",
 };
 
 export const quotePage = {
@@ -891,7 +891,7 @@ export const quotePage = {
   description:
     "Share a few details about your business. Our team will recommend the right operating model, scope, and next step.",
   proofPoints: ["One connected operating layer", "Flexible service scope", "Built for MENA growth"],
-  submitLabel: "Request a quote",
+  submitLabel: "Request pricing",
   submittingLabel: "Sending request...",
   backLabel: "Back to homepage",
   successTitle: "Your request is on its way.",
@@ -932,7 +932,7 @@ export const quotePage = {
 export const arabicCopy = {
   site: {
     logoAlt: "فلكستوك",
-    primaryCta: "اطلب عرض سعر",
+    primaryCta: "اطلب تسعيرًا",
     secondaryCta: "اكتشف المنصة",
     menuLabel: "افتح القائمة",
     closeMenuLabel: "أغلق القائمة",
@@ -1247,7 +1247,7 @@ export const arabicCopy = {
     eyebrow: "لنبنِ ما هو قادم",
     title: "حوّل التعقيد التشغيلي إلى زخم.",
     description: "أخبرنا إلى أين يتجه عملك، وسنوضح لك كيف تساعدك فلكستوك على الوصول.",
-    cta: "اطلب عرض سعر",
+    cta: "اطلب تسعيرًا",
   },
   footer: {
     description: "نظام تشغيل التجارة الإلكترونية للعلامات الطموحة في منطقة الشرق الأوسط وشمال أفريقيا.",
@@ -1258,7 +1258,7 @@ export const arabicCopy = {
     title: "اطلب تسعيرًا يناسب عملياتك.",
     description: "شاركنا بعض التفاصيل عن عملك، وسيرشح لك فريقنا نموذج التشغيل والنطاق والخطوة التالية المناسبة.",
     proofPoints: ["طبقة تشغيل واحدة متصلة", "نطاق خدمة مرن", "مصمم للنمو في المنطقة"],
-    submitLabel: "اطلب عرض سعر",
+    submitLabel: "اطلب تسعيرًا",
     submittingLabel: "جارٍ إرسال الطلب...",
     backLabel: "العودة إلى الصفحة الرئيسية",
     successTitle: "تم إرسال طلبك.",

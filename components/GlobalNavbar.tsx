@@ -24,6 +24,24 @@ export function GlobalNavbar() {
   const isSolutionsRoute = pathname.startsWith("/solutions");
 
   useEffect(() => {
+    setIsMobileOpen(false);
+    setIsSolutionsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isMobileOpen) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileOpen]);
+
+  useEffect(() => {
     if (!isSolutionsOpen && !isMobileOpen) {
       return;
     }
@@ -58,7 +76,7 @@ export function GlobalNavbar() {
     <header className="sticky top-0 z-50 border-b border-flextock-line bg-flextock-navy/95">
       <nav
         aria-label={copy.mainNavLabel}
-        className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-6 lg:px-10"
+        className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-10"
       >
         <Link href="/" aria-label={copy.logoAlt}>
           <Image
@@ -195,16 +213,16 @@ export function GlobalNavbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-flextock-line px-6 py-5 lg:hidden"
+            className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-flextock-line bg-flextock-navy px-5 py-5 sm:px-6 lg:hidden"
           >
-            <div className="mx-auto flex max-w-7xl flex-col gap-4">
-              <span className="text-xs uppercase tracking-[0.18em] text-flextock-muted">
+            <div className="mx-auto flex max-w-7xl flex-col gap-1">
+              <span className="mb-2 text-[0.7rem] uppercase tracking-[0.18em] text-flextock-muted">
                 {copy.solutionsLabel}
               </span>
               <Link
                 href="/solutions"
                 onClick={() => setIsMobileOpen(false)}
-                className="text-sm font-medium text-flextock-neon"
+                className="rounded-lg px-3 py-3 text-sm font-medium text-flextock-neon"
               >
                 {copy.solutionsOverviewLabel}
               </Link>
@@ -213,17 +231,18 @@ export function GlobalNavbar() {
                   key={solution.slug}
                   href={`/solutions/${solution.slug}`}
                   onClick={() => setIsMobileOpen(false)}
-                  className="pl-3 text-sm text-flextock-foreground"
+                  className="rounded-lg px-3 py-3 ps-5 text-sm text-flextock-foreground"
                 >
                   {solution.name}
                 </Link>
               ))}
+              <div className="my-3 border-t border-flextock-line" />
               {primaryNavigation.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="text-sm text-flextock-muted"
+                  className="rounded-lg px-3 py-3 text-sm text-flextock-muted"
                 >
                   {item.label}
                 </Link>
@@ -231,7 +250,7 @@ export function GlobalNavbar() {
               <Link
                 href="/quote"
                 onClick={() => setIsMobileOpen(false)}
-                className="mt-2 flex w-fit items-center gap-2 bg-flextock-neon px-5 py-2.5 text-sm font-medium text-flextock-navy"
+                className="mt-3 flex min-h-11 w-full items-center justify-center gap-2 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy"
               >
                 {copy.primaryCta}
                 <ArrowUpRight size={15} />
@@ -239,7 +258,7 @@ export function GlobalNavbar() {
               <button
                 type="button"
                 onClick={() => setLocale(locale === "en" ? "ar" : "en")}
-                className="w-fit text-sm text-flextock-muted transition-colors hover:text-flextock-foreground"
+                className="mt-2 min-h-11 w-full rounded-lg px-3 py-3 text-start text-sm text-flextock-muted transition-colors hover:text-flextock-foreground"
               >
                 {localeConfig[locale].switchLabel}
               </button>
