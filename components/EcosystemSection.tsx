@@ -34,7 +34,7 @@ export function EcosystemSection() {
   return (
     <section
       id="ecosystem"
-      className="border-t border-flextock-line bg-flextock-panel px-6 py-24 lg:px-10 lg:py-32"
+      className="border-t border-flextock-line bg-flextock-panel px-5 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-32"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:items-end">
@@ -42,7 +42,7 @@ export function EcosystemSection() {
             {content.eyebrow}
           </p>
           <div>
-            <h2 className="max-w-3xl text-4xl font-medium leading-[0.98] tracking-[-0.06em] text-flextock-foreground sm:text-5xl">
+            <h2 className="max-w-3xl text-3xl font-medium leading-[1.05] tracking-[-0.05em] text-flextock-foreground sm:text-4xl sm:leading-[0.98] sm:tracking-[-0.06em] lg:text-5xl">
               {content.title}
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-flextock-muted">

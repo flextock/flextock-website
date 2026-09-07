@@ -4,7 +4,7 @@ import { QuotePageContent } from "@/components/QuotePageContent";
 import { quotePage } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "Get Quote — Flextock",
+  title: "Request pricing — Flextock",
   description: quotePage.description,
   alternates: { canonical: "/quote" },
 };
