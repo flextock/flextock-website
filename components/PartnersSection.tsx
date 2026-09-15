@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
-import { partnerLogos } from "@/constants";
+import { partnerLogos, partnersContent } from "@/constants";
 import { useLocale } from "@/components/LocaleProvider";
 
 export function PartnersSection() {
   const { locale } = useLocale();
   const reduceMotion = useReducedMotion();
+  const content = partnersContent[locale];
 
   return (
     <section
@@ -18,12 +19,10 @@ export function PartnersSection() {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-2xl">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
-            {locale === "ar" ? "شركاء النجاح" : "Trusted partners"}
+            {content.eyebrow}
           </p>
           <h2 className="mt-6 text-3xl font-medium leading-tight tracking-[-0.05em] text-flextock-foreground sm:text-4xl">
-            {locale === "ar"
-              ? "علامات تجارية تنمو مع فلكستوك."
-              : "Brands operating and growing with Flextock."}
+            {content.title}
           </h2>
         </div>
 
@@ -47,7 +46,7 @@ export function PartnersSection() {
           </div>
           <div className="flex items-center justify-between py-3 text-[10px] uppercase tracking-[0.16em] text-flextock-muted">
             <span>
-              {locale === "ar" ? "شركاء يعملون معنا" : "Operating with us"}
+              {content.meta}
             </span>
             <span aria-hidden="true">●</span>
           </div>

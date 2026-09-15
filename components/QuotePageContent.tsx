@@ -28,9 +28,11 @@ export function QuotePageContent() {
           <h1 className="mt-5 max-w-xl text-[2rem] font-medium leading-[1.05] tracking-[-0.05em] sm:mt-7 sm:text-5xl sm:leading-[0.95] sm:tracking-[-0.07em] lg:text-6xl">
             {content.title}
           </h1>
-          <p className="mt-5 max-w-lg text-base leading-7 text-flextock-muted sm:mt-7 sm:text-lg sm:leading-8">
-            {content.description}
-          </p>
+          {content.description ? (
+            <p className="mt-5 max-w-lg text-base leading-7 text-flextock-muted sm:mt-7 sm:text-lg sm:leading-8">
+              {content.description}
+            </p>
+          ) : null}
           <ul className="mt-8 space-y-4 sm:mt-10">
             {content.proofPoints.map((point) => (
               <li

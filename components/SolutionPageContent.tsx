@@ -9,11 +9,13 @@ import { useState } from "react";
 import {
   arabicCopy,
   localizedSolutionDetails,
+  marketingVisuals,
   solutionCards,
   solutionDetails,
   solutionPageContent,
 } from "@/constants";
 import { useLocale } from "@/components/LocaleProvider";
+import { VisualPlaceholder } from "@/components/VisualPlaceholder";
 
 export function SolutionPageContent({ slug }: { slug: string }) {
   const { locale } = useLocale();
@@ -34,6 +36,8 @@ export function SolutionPageContent({ slug }: { slug: string }) {
     locale === "ar" ? arabicCopy.solutionPage : solutionPageContent;
   const sourceDetail = solutionDetails[solution.slug];
   const image = sourceDetail.image;
+  const egyptKsa = marketingVisuals.egyptKsa;
+  const showEgyptKsaPlaceholder = solution.slug === "cross-border-trade";
 
   return (
     <main className="min-h-screen bg-flextock-navy text-flextock-foreground">
@@ -74,14 +78,24 @@ export function SolutionPageContent({ slug }: { slug: string }) {
               transition={{ delay: 0.1, duration: 0.65 }}
               className="relative aspect-[4/5] max-h-[22rem] sm:max-h-none"
             >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-contain"
-              />
+              {showEgyptKsaPlaceholder ? (
+                <VisualPlaceholder
+                  src={egyptKsa.src}
+                  alt={egyptKsa.alt}
+                  label={egyptKsa.label[locale]}
+                  note={egyptKsa.note[locale]}
+                  className="h-full min-h-[22rem]"
+                />
+              ) : (
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-contain"
+                />
+              )}
             </motion.div>
             {sourceDetail.secondaryImages?.map((secondaryImage) => (
               <div

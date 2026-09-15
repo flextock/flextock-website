@@ -21,6 +21,7 @@ import {
   showcaseContent,
 } from "@/constants";
 import { useLocale } from "@/components/LocaleProvider";
+import { VisualPlaceholder } from "@/components/VisualPlaceholder";
 
 const iconMap: Record<string, LucideIcon> = {
   activity: Activity,
@@ -63,7 +64,6 @@ export function OperatingSystemShowcase() {
   });
 
   const currentStep = localizedSteps[activeStep];
-  const signalBars = currentStep.visualBars;
 
   function selectStep(index: number) {
     setActiveStep(index);
@@ -109,23 +109,13 @@ export function OperatingSystemShowcase() {
                     {currentStep.visualLabel}
                   </p>
                 </div>
-                <div
-                  className="hidden h-20 w-28 items-end gap-1 border-y border-flextock-line py-3 sm:flex lg:mt-10 lg:h-28 lg:w-auto lg:gap-2 lg:py-4"
-                  aria-label={`${currentStep.visualLabel} signal`}
-                >
-                  {signalBars.map((height, index) => (
-                    <motion.div
-                      key={`${currentStep.number}-${index}`}
-                      initial={reduceMotion ? false : { height: 0 }}
-                      animate={{ height: `${height}%` }}
-                      transition={{ duration: 0.35, delay: index * 0.025 }}
-                      className={`flex-1 ${
-                        index === signalBars.length - 1
-                          ? "bg-flextock-neon"
-                          : "bg-flextock-line"
-                      }`}
-                    />
-                  ))}
+                <div className="hidden sm:block lg:mt-10">
+                  <VisualPlaceholder
+                    label={localizedContent.visualPendingLabel}
+                    note={localizedContent.visualPendingNote}
+                    alt={currentStep.visualLabel}
+                    className="min-h-28"
+                  />
                 </div>
               </div>
 

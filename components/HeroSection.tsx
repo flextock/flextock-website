@@ -2,18 +2,18 @@
 
 import { ArrowRight, Play } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 import {
   arabicCopy,
-  brandAssets,
   heroContent,
   heroSignals,
+  marketingVisuals,
   siteConfig,
 } from "@/constants";
 import { useLocale } from "@/components/LocaleProvider";
+import { VisualPlaceholder } from "@/components/VisualPlaceholder";
 
 export function HeroSection() {
   const { locale } = useLocale();
@@ -67,15 +67,17 @@ export function HeroSection() {
         </motion.div>
 
         <div className="relative mx-auto w-full max-w-xl">
-          <div className="relative aspect-[4/5] max-h-[28rem] overflow-hidden sm:max-h-none">
-            <Image
-              src={brandAssets.growth.src}
-              alt={brandAssets.growth.alt}
-              fill
-              priority
-              sizes="(min-width: 1024px) 44vw, 100vw"
-              className="object-contain"
-            />
+          <div className="grid grid-cols-3 gap-2">
+            {marketingVisuals.heroPhotos.map((photo) => (
+              <VisualPlaceholder
+                key={photo.alt}
+                src={photo.src}
+                alt={photo.alt}
+                label={photo.label[locale]}
+                note={photo.note[locale]}
+                className="aspect-[3/4] min-h-[12rem] sm:min-h-[18rem]"
+              />
+            ))}
           </div>
           <div className="border-y border-flextock-line bg-flextock-panel">
             <div className="grid grid-cols-1 divide-y divide-flextock-line sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:rtl:divide-x-reverse">

@@ -47,6 +47,9 @@ export function QuoteForm() {
       aria-busy={isSubmitting}
       className="border-y border-flextock-line bg-flextock-panel p-6 sm:p-10"
     >
+      <h2 className="mb-8 text-2xl font-medium tracking-[-0.04em] text-flextock-foreground">
+        {content.formTitle}
+      </h2>
       <div className="grid gap-6 sm:grid-cols-2">
         <label className="space-y-2 text-sm text-flextock-muted">
           <span>{content.fields.name.label}</span>
@@ -211,6 +214,31 @@ export function QuoteForm() {
               </option>
             ))}
           </select>
+        </label>
+        <label className="space-y-2 text-sm text-flextock-muted">
+          <span>{content.fields.role.label}</span>
+          <input
+            required
+            name="role"
+            placeholder={content.fields.role.placeholder}
+            className="w-full rounded-lg border border-flextock-line bg-flextock-navy px-4 py-3.5 text-flextock-foreground outline-none placeholder:text-flextock-muted/60 focus:border-flextock-neon focus:ring-1 focus:ring-flextock-neon"
+          />
+        </label>
+        <label className="space-y-2 text-sm text-flextock-muted">
+          <span>{content.fields.website.label}</span>
+          <input
+            name="website"
+            placeholder={content.fields.website.placeholder}
+            className="w-full rounded-lg border border-flextock-line bg-flextock-navy px-4 py-3.5 text-flextock-foreground outline-none placeholder:text-flextock-muted/60 focus:border-flextock-neon focus:ring-1 focus:ring-flextock-neon"
+          />
+        </label>
+        <label className="space-y-2 text-sm text-flextock-muted">
+          <span>{content.fields.discountCode.label}</span>
+          <input
+            name="discountCode"
+            placeholder={content.fields.discountCode.placeholder}
+            className="w-full rounded-lg border border-flextock-line bg-flextock-navy px-4 py-3.5 text-flextock-foreground outline-none placeholder:text-flextock-muted/60 focus:border-flextock-neon focus:ring-1 focus:ring-flextock-neon"
+          />
         </label>
       </div>
       <label className="mt-6 block space-y-2 text-sm text-flextock-muted">
