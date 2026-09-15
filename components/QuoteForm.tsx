@@ -28,7 +28,7 @@ export function QuoteForm() {
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex min-h-[30rem] flex-col justify-center border-y border-flextock-line bg-flextock-panel p-8 sm:p-12"
+        className="flex min-h-[22rem] flex-col justify-center border-y border-flextock-line bg-flextock-panel p-6 sm:min-h-[30rem] sm:p-12"
       >
         <CheckCircle2 size={32} className="text-flextock-neon" />
         <h2 className="mt-8 text-3xl font-medium tracking-[-0.05em] text-flextock-foreground">

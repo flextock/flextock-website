@@ -26,7 +26,7 @@ export function SolutionsOverview() {
 
   return (
     <main className="min-h-screen bg-flextock-navy text-flextock-foreground">
-      <section className="px-6 pb-20 pt-20 lg:px-10 lg:pb-28 lg:pt-28">
+      <section className="px-5 pb-14 pt-14 sm:px-6 sm:pb-20 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-28">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
@@ -34,20 +34,20 @@ export function SolutionsOverview() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-flextock-neon sm:text-xs sm:tracking-[0.2em]">
               {content.eyebrow}
             </p>
-            <h1 className="mt-7 text-5xl font-medium leading-[0.96] tracking-[-0.06em] sm:text-6xl">
+            <h1 className="mt-5 text-[2rem] font-medium leading-[1.05] tracking-[-0.05em] sm:mt-7 sm:text-5xl sm:leading-[0.96] sm:tracking-[-0.06em] lg:text-6xl">
               {content.title}
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-flextock-muted">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-flextock-muted sm:mt-7 sm:text-lg sm:leading-8">
               {content.description}
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="border-y border-flextock-line bg-flextock-panel px-6 py-16 lg:px-10 lg:py-24">
+      <section className="border-y border-flextock-line bg-flextock-panel px-5 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-px border-y border-flextock-line bg-flextock-line md:grid-cols-2">
           {solutions.map((solution, index) => {
             const detail = solutionDetails[solution.slug];
@@ -102,14 +102,14 @@ export function SolutionsOverview() {
         </div>
       </section>
 
-      <section className="px-6 py-20 lg:px-10 lg:py-28">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 border-y border-flextock-line bg-flextock-panel p-8 sm:p-12 md:flex-row md:items-center">
-          <h2 className="max-w-2xl text-3xl font-medium tracking-[-0.04em] sm:text-4xl">
+      <section className="px-5 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 border-y border-flextock-line bg-flextock-panel p-6 sm:p-10 md:flex-row md:items-center lg:p-12">
+          <h2 className="max-w-2xl text-2xl font-medium tracking-[-0.04em] sm:text-3xl lg:text-4xl">
             {content.ctaTitle}
           </h2>
           <Link
             href="/quote"
-            className="inline-flex w-fit shrink-0 items-center gap-3 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground"
+            className="inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-3 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground sm:w-fit"
           >
             {content.cta}
             <ArrowRight size={16} className="rtl:rotate-180" />

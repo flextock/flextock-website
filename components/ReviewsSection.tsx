@@ -12,14 +12,14 @@ export function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="border-t border-flextock-line bg-flextock-panel px-6 py-24 lg:px-10 lg:py-32"
+      className="border-t border-flextock-line bg-flextock-panel px-5 py-14 sm:px-6 sm:py-20 lg:px-10 lg:py-32"
     >
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.75fr_1.25fr]">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-flextock-neon">
             {content.eyebrow}
           </p>
-          <h2 className="mt-7 max-w-xl text-4xl font-medium leading-[0.98] tracking-[-0.06em] text-flextock-foreground sm:text-5xl">
+          <h2 className="mt-5 max-w-xl text-3xl font-medium leading-[1.05] tracking-[-0.05em] text-flextock-foreground sm:mt-7 sm:text-4xl sm:leading-[0.98] sm:tracking-[-0.06em] lg:text-5xl">
             {content.title}
           </h2>
           <p className="mt-6 max-w-lg text-lg leading-8 text-flextock-muted">
