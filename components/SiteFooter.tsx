@@ -18,6 +18,9 @@ export function SiteFooter() {
   const content = locale === "ar" ? arabicCopy.cta : ctaContent;
   const footer = locale === "ar" ? arabicCopy.footer : footerContent;
   const siteCopy = locale === "ar" ? arabicCopy.site : siteConfig;
+  const secondaryCta = content.secondaryCta ?? siteCopy.secondaryCta;
+  const secondaryHref = content.secondaryHref ?? "#system";
+  const signOff = footer.signOff;
 
   return (
     <>
@@ -37,16 +40,24 @@ export function SiteFooter() {
               {content.description}
             </p>
           </div>
-          <Link
-            href="/quote"
-            className="group flex min-h-11 w-full items-center justify-center gap-3 bg-flextock-neon px-6 py-3.5 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground sm:w-fit"
-          >
-            {content.cta}
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
-            />
-          </Link>
+          <div className="flex w-full flex-col gap-3 sm:w-fit sm:flex-row sm:items-center">
+            <Link
+              href="/quote"
+              className="group flex min-h-11 w-full items-center justify-center gap-3 bg-flextock-neon px-6 py-3.5 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground sm:w-fit"
+            >
+              {content.cta}
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
+              />
+            </Link>
+            <a
+              href={secondaryHref}
+              className="flex min-h-11 w-full items-center justify-center px-6 py-3.5 text-sm text-flextock-muted transition-colors hover:text-flextock-foreground sm:w-fit"
+            >
+              {secondaryCta}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -63,7 +74,9 @@ export function SiteFooter() {
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-3 max-w-sm leading-6">{footer.description}</p>
+            <p className="mt-3 max-w-sm text-base font-medium leading-6 text-flextock-foreground">
+              {signOff}
+            </p>
             <a
               href={`mailto:${siteConfig.contactEmail}`}
               className="mt-4 inline-block text-sm text-flextock-foreground transition-colors hover:text-flextock-neon"

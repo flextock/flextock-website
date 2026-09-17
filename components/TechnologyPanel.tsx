@@ -6,7 +6,6 @@ import { useState } from "react";
 
 import {
   arabicCopy,
-  siteConfig,
   technologyContent,
 } from "@/constants";
 import { useLocale } from "@/components/LocaleProvider";
@@ -15,7 +14,6 @@ export function TechnologyPanel() {
   const { locale } = useLocale();
   const content =
     locale === "ar" ? arabicCopy.technology : technologyContent;
-  const siteCopy = locale === "ar" ? arabicCopy.site : siteConfig;
   const reduceMotion = useReducedMotion();
   const [activeCapability, setActiveCapability] = useState(0);
 
@@ -39,7 +37,7 @@ export function TechnologyPanel() {
             href="#showcase"
             className="mt-9 inline-flex items-center gap-3 text-sm text-flextock-foreground transition-colors hover:text-flextock-neon"
           >
-            {siteCopy.secondaryCta}
+            {content.cta}
             <ArrowUpRight size={16} />
           </a>
         </div>

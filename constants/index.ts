@@ -26,8 +26,8 @@ export const siteConfig = {
   solutionsOverviewLabel: "View all solutions",
   playVideoLabel: "Play video",
   pauseVideoLabel: "Pause video",
-  primaryCta: "Request pricing",
-  secondaryCta: "Explore the platform",
+  primaryCta: "Talk to our team",
+  secondaryCta: "See how it works",
   contactHref: "/quote",
   contactEmail: "info@flextock.com",
 };
@@ -96,12 +96,15 @@ export const navigation = {
 };
 
 export const heroContent = {
-  eyebrow: "Commerce infrastructure for growing brands",
-  title: "Make every order easier to operate.",
+  eyebrow: "E-Commerce Enablement for brands in Egypt and Saudi Arabia",
+  title: "Your Brand, Greater than before!",
   description:
-    "Flextock brings fulfillment, delivery, inventory, and cash workflows into one accountable operation.",
-  supportingText:
-    "Start with the service you need. Add the next one when the business is ready.",
+    "Flextock stores your stock, ships every order, collects your cash, and takes your brand to Saudi Arabia, all from one dashboard. You get your time back for the part only you can do.",
+  trustStrip: [
+    "Backed by TLcom Capital",
+    "Trusted by 2500+ brands",
+    "9M Orders Fulfilled",
+  ],
 };
 
 export const heroSignals = [
@@ -124,9 +127,9 @@ export const heroSignals = [
 
 export const videoContent = {
   eyebrow: "Inside Flextock",
-  title: "See what happens between order and delivery.",
+  title: "From order placed to order delivered and everything in between.",
   description:
-    "A short look at the people, processes, and technology that keep commerce moving.",
+    "Get to know the people, processes, and technology behind it all.",
   source: "/videos/Flextock v04.mp4",
   poster: "/pictures/2 copy 10.png",
   label: "Flextock explainer video",
@@ -175,62 +178,110 @@ export const brandAssets = {
   },
 };
 
+export const marketingVisuals = {
+  heroPhotos: [
+    {
+      src: null as string | null,
+      label: { en: "Warehouse interior", ar: "داخل المستودع" },
+      note: { en: "Real-life photo pending", ar: "الصورة الحقيقية قيد التسليم" },
+      alt: "Warehouse interior",
+    },
+    {
+      src: null as string | null,
+      label: { en: "Order being prepared", ar: "تجهيز الطلب" },
+      note: { en: "Real-life photo pending", ar: "الصورة الحقيقية قيد التسليم" },
+      alt: "Order being prepared",
+    },
+    {
+      src: null as string | null,
+      label: { en: "Employee", ar: "موظف" },
+      note: { en: "Real-life photo pending", ar: "الصورة الحقيقية قيد التسليم" },
+      alt: "Flextock employee",
+    },
+  ],
+  egyptKsa: {
+    src: null as string | null,
+    label: { en: "Egypt–KSA graphic", ar: "رسم بين مصر والسعودية" },
+    note: {
+      en: "Graphic pending — a visual between Egypt and KSA",
+      ar: "الرسم قيد التسليم — صورة بين مصر والسعودية",
+    },
+    alt: "Graphic between Egypt and Saudi Arabia",
+  },
+};
+
+export const partnersContent = {
+  en: {
+    eyebrow: "Trusted by",
+    title: "Brands that flow and grow every day with Flextock",
+    meta: "Operating with us",
+  },
+  ar: {
+    eyebrow: "نفتخر بثقتهم فينا",
+    title: "علامات تجارية تنمو كل يوم مع فلكستوك",
+    meta: "شركاء يعملون معنا",
+  },
+} as const;
+
 export const showcaseContent = {
-  eyebrow: "How the operation works",
+  eyebrow: "Tech-enabled operations: how does it work?",
   title: "The right signal at the right moment.",
   description:
-    "From inventory risk to delivery exceptions, Flextock gives teams the information they need before a small issue becomes a costly one.",
+    "Flextock's system notifies you and your team with every update to manage any issue easily and swiftly.",
   systemLabel: "Flextock OS",
   signalLabel: "Operating signal",
+  visualPendingLabel: "Operating visual pending",
+  visualPendingNote:
+    "Replace with photography or motion so this panel does not look AI-generated.",
 };
 
 export const journeySteps = [
   {
     number: "01",
     icon: "activity" as JourneyIcon,
-    label: "Operating layer",
+    label: "Operations Intelligence",
     title: "Beyond Fulfillment",
     description:
-      "Flextock is the e-commerce operating system for fulfillment, delivery-only, and cross-border growth—managed from one unified portal.",
-    visualLabel: "Connected operation",
+      "Fulfillment, delivery-only, and even cross-border growth all in one unified portal and system.",
+    visualLabel: "One unified portal",
     visualValue: "1",
-    visualUnit: "unified portal",
+    visualUnit: "connected operations",
     visualBars: [38, 52, 46, 68, 58, 78, 72, 88],
   },
   {
     number: "02",
     icon: "activity" as JourneyIcon,
-    label: "Inventory intelligence",
+    label: "Inventory Intelligence",
     title: "Predictive Supply & Demand",
     description:
-      "Stop guessing. Our dashboard calculates real-time SKU Run Rates and days remaining, flagging stock at risk before you lose sales.",
-    visualLabel: "SKU Run Rate",
-    visualValue: "Live",
-    visualUnit: "days remaining",
+      "Intelligent system that calculates real-time SKU run rates and inventory to flag stock at risk in advance.",
+    visualLabel: "Live updates",
+    visualValue: "SKU",
+    visualUnit: "run rate",
     visualBars: [82, 76, 68, 58, 50, 42, 34, 28],
   },
   {
     number: "03",
     icon: "shield" as JourneyIcon,
-    label: "COD risk control",
-    title: "Make the decision before dispatch.",
+    label: "COD Risk Management",
+    title: "Risk Management Before Dispatch.",
     description:
-      "Screen COD orders against known non-receipt patterns before dispatch, giving your team a reasoned decision before cost is incurred.",
-    visualLabel: "COD risk detected",
-    visualValue: "Risk",
-    visualUnit: "before dispatch",
+      "Screening systems for COD orders that detect customer patterns before dispatch to minimize risk before cost is incurred.",
+    visualLabel: "Risk managed",
+    visualValue: "COD",
+    visualUnit: "screened orders",
     visualBars: [24, 30, 28, 44, 36, 62, 48, 70],
   },
   {
     number: "04",
     icon: "refresh" as JourneyIcon,
-    label: "Reverse logistics",
+    label: "Reverse Logistics",
     title: "Transparent Reverse Logistics",
     description:
-      "Give every return a clear next state—repackage, investigate missing parts, or record as scrap—so sellable and non-sellable inventory stay visible and accountable.",
-    visualLabel: "Returns classified",
+      "Returned orders are investigated and classified to distinguish sellable and non-sellable inventory transparently.",
+    visualLabel: "RTM classifications",
     visualValue: "RTM",
-    visualUnit: "classification",
+    visualUnit: "for every return",
     visualBars: [72, 64, 58, 48, 42, 36, 30, 24],
   },
 ];
@@ -271,9 +322,9 @@ export const solutionCards = [
 export const ecosystemContent = {
   en: {
     eyebrow: "The Flextock ecosystem",
-    title: "Services that fit the way you sell.",
+    title: "Services that fit your needs.",
     description:
-      "Choose the service you need now. Add another when the operation is ready.",
+      "Start with what's stressing you out right now, and easily grow as you go.",
     linkLabel: "Learn more",
     interactionHint: "Select a service",
     cards: [
@@ -281,7 +332,7 @@ export const ecosystemContent = {
         name: "Flexcash",
         label: "Liquidity",
         description:
-          "Keep eligible liquidity, deductions, and collections visible in one financial flow.",
+          "Keep liquidity, deductions, and collections organized in one financial flow.",
         href: "/solutions/flexcash",
         visualSteps: ["Collections", "Deductions", "Available cash"],
       },
@@ -289,7 +340,7 @@ export const ecosystemContent = {
         name: "Flexship",
         label: "Delivery orchestration",
         description:
-          "Compare courier options and route each order against the promised service level.",
+          "Smooth delivery-only: an efficient shipping system that automatically matches orders with the best courier in the area.",
         href: "/solutions/delivery-aggregation",
         visualSteps: ["Order", "Courier", "Delivered"],
       },
@@ -297,7 +348,7 @@ export const ecosystemContent = {
         name: "Flexborders",
         label: "Regional expansion",
         description:
-          "Coordinate the practical steps behind Egypt–Saudi commerce, from shipping to documentation.",
+          "Expand into KSA with ease: no hassle, no paperwork, and no need to open an office. We've got it all covered.",
         href: "/solutions/cross-border-trade",
         visualSteps: ["Egypt", "Border", "Saudi Arabia"],
       },
@@ -305,17 +356,17 @@ export const ecosystemContent = {
         name: "Flexshops",
         label: "KSA commerce model",
         description:
-          "Select products and run acquisition while Flextock manages the operation behind the sale.",
+          "Grow your sales by selling across different channels from the same platform.",
         href: "/solutions/sales",
         visualSteps: ["Product", "Campaign", "Order"],
       },
     ],
   },
   ar: {
-    eyebrow: "منظومة فلكستوك",
-    title: "اختر نموذج التشغيل الذي يناسب طموحك.",
+    eyebrow: "نظام فلكستوك المتكامل",
+    title: "خدمات تلائم احتياجاتك.",
     description:
-      "ابدأ بالقدرة التي تحتاجها اليوم، وأضف البنية التحتية التي تحافظ على حركة النمو غدًا.",
+      "ابدأ بحل أكثر ما يقلقك أولًا، وتمتع بسهولة النمو عند الاحتياج.",
     linkLabel: "اعرف المزيد",
     interactionHint: "اختر طبقة التشغيل",
     cards: [
@@ -323,7 +374,7 @@ export const ecosystemContent = {
         name: "Flexcash",
         label: "السيولة",
         description:
-          "احصل على رأس مال عامل من مبيعاتك بشكل أسرع، مع تسوية الخصومات تلقائيًا من التحصيلات.",
+          "حافظ على السيولة المالية والخصومات والتحصيل منظمة في نظام مالي موحد.",
         href: "/solutions/flexcash",
         visualSteps: ["التحصيل", "الخصومات", "السيولة المتاحة"],
       },
@@ -331,7 +382,7 @@ export const ecosystemContent = {
         name: "Flexship",
         label: "تنسيق التوصيل",
         description:
-          "اجمع شركات الشحن ووجّه كل طلب حسب الوجهة وجودة العنوان وأداء الخدمة.",
+          "خدمات للتوصيل فقط سلسة: نظام توصيل فعال يوافق طلبات عملائك مع أفضل شركة شحن في المنطقة تلقائيًا.",
         href: "/solutions/delivery-aggregation",
         visualSteps: ["الطلب", "المندوب", "تم التوصيل"],
       },
@@ -339,7 +390,7 @@ export const ecosystemContent = {
         name: "Flexborders",
         label: "التوسع الإقليمي",
         description:
-          "انقل منتجاتك الناجحة إلى السعودية مع تنسيق الشحن والعمليات العابرة للحدود.",
+          "توسع في السعودية بسهولة: بدون توتر من الأوراق الرسمية أو الاحتياج لفتح مكتب، نحن نتولى العملية بأكملها.",
         href: "/solutions/cross-border-trade",
         visualSteps: ["مصر", "الحدود", "السعودية"],
       },
@@ -347,7 +398,7 @@ export const ecosystemContent = {
         name: "Flexshops",
         label: "نموذج تجارة في السعودية",
         description:
-          "اختر المنتجات وأدر اكتساب العملاء، بينما تتولى فلكستوك التوريد والتنفيذ والتأكيد والتحصيل.",
+          "كبر مبيعاتك عن طريق البيع في قنوات متنوعة من داخل نفس المنصة.",
         href: "/solutions/sales",
         visualSteps: ["المنتج", "الحملة", "الطلب"],
       },
@@ -356,7 +407,7 @@ export const ecosystemContent = {
 } as const;
 
 export const solutionPageContent = {
-  eyebrow: "Flextock solution",
+  eyebrow: "A Flextock Solution",
   cta: "Talk to our team",
   howItWorks: "How it works",
 };
@@ -419,26 +470,26 @@ export const solutionDetails: Record<string, SolutionDetail> = {
     ],
   },
   flexborders: {
-    title: "Take your best sellers across MENA.",
+    title: "Take your best selling products across the MENA region.",
     intro:
-      "Enter the Saudi market with a coordinated operating layer for cross-border shipping, customs documentation, and customer expectations.",
+      "Enter the Saudi market with confidence: coordinated operations for cross-border shipping, customs documentation, and customer expectations we live up to.",
     image: brandAssets.market,
     problem: {
       eyebrow: "The expansion gap",
-      title: "New markets should feel like growth, not guesswork.",
+      title: "Entering new markets now feels like growth and confidence.",
       description:
-        "Flextock helps coordinate the operational and documentation requirements involved in expansion, including SFDA, SABER, and SASO where applicable.",
+        "Flextock helps coordinate the operational and documentation requirements to help you expand smoothly.",
     },
     outcomes: [
       { value: "MENA", label: "expansion ready" },
-      { value: "1 layer", label: "for cross-border operations" },
-      { value: "Clearer", label: "landed-cost decisions" },
+      { value: "1 platform, 1 process", label: "for cross-border operations" },
+      { value: "Clear", label: "landed-cost decisions" },
     ],
     steps: [
-      { title: "Choose the right market", description: "Use operational and commercial signals to prioritize where to grow next." },
-      { title: "Connect the demand", description: "Bring new storefronts and order sources into a familiar workflow." },
-      { title: "Fulfill locally", description: "Coordinate inventory and delivery around the customer’s market." },
-      { title: "Scale with signal", description: "See what is working before you commit more capital." },
+      { title: "Choose your next market", description: "Prioritize where you need to grow next." },
+      { title: "Connect the demand", description: "Start the paperwork, connect everything you need." },
+      { title: "Fulfill locally", description: "Start where you shine best and shine even more." },
+      { title: "Scale comfortably", description: "Grow as you deserve with no stress." },
     ],
   },
   flexshops: {
@@ -522,38 +573,39 @@ solutionDetails.sales = {
 
 export const technologyContent = {
   eyebrow: "Designed to connect",
-  title: "See the work. Connect the tools.",
+  title: "Connect every tool in your kit in one platform.",
   description:
-    "Bring storefronts, warehouses, couriers, and finance workflows into one product view, with the detail your team needs to act.",
+    "Everything connects smoothly, nothing is missed.",
   capabilities: ["Inventory control", "Delivery control", "Exception control"],
   capabilityDetails: [
-    "Know what is available, moving, and at risk before it affects the customer.",
-    "Compare courier performance and act on delivery exceptions from one view.",
-    "Turn order, inventory, and return activity into decisions your team can act on.",
+    "Know what's available, what's moving, and what's at risk before your customer does.",
+    "Know what's out for delivery, on route, delivered, or even returning in real time.",
+    "Know every detail when it comes to finance, security, and IT directly from the dashboard.",
   ],
   integrations: ["Storefronts", "Marketplaces", "Couriers", "Warehouse workflows", "Finance workflows", "API access"],
   integrationsLabel: "Connect what already works",
   integrationsNote: "Available connections depend on market, service scope, and operating model.",
+  cta: "Explore the platform",
 };
 
 export const networkContent = {
-  eyebrow: "Delivery choices",
-  title: "Give customers a better finish.",
+  eyebrow: "Delivery experiences",
+  title: "Give customers the experience they deserve.",
   description:
-    "Use the service level that fits the order, from same-day delivery to Pick & Choose at the door.",
+    "Use the service level that fits your orders from same-day delivery to Pick & Choose at the door.",
   points: [
-    { value: "One view", label: "across orders, inventory, delivery, and returns" },
-    { value: "Same-day", label: "delivery where the customer promise demands it" },
-    { value: "Pick & choose", label: "a more considered experience at the door" },
+    { value: "One portal, one view", label: "Everything from orders to inventory, delivery, and returns." },
+    { value: "Same-day delivery", label: "When your customers and demand need it most" },
+    { value: "Pick & Choose", label: "A personalized shopping experience at the door" },
   ],
 };
 
 export const reviewsContent = {
   en: {
-    eyebrow: "Customer proof",
+    eyebrow: "Customer Feedback",
     title: "What brands say about Flextock.",
     description:
-      "Real feedback from businesses using Flextock to keep fulfillment, delivery, and cash moving.",
+      "Real feedback. Real experiences. Real impact.",
     sourceLabel: "Reviews from Flextock Egypt",
     sourceCta: "Read more customer reviews",
     sourceHref: "https://www.google.com/search?q=Flextock+Head+Office",
@@ -579,10 +631,10 @@ export const reviewsContent = {
     ],
   },
   ar: {
-    eyebrow: "آراء العملاء",
-    title: "ماذا يقول عملاء فلكستوك؟",
+    eyebrow: "ردود العملاء",
+    title: "ما تقوله الشركات عن تجربتها معنا",
     description:
-      "آراء حقيقية من شركات تستخدم فلكستوك للحفاظ على حركة التنفيذ والتوصيل والتحصيل.",
+      "ردود حقيقية من تجارب حقيقية آثارها حقيقية.",
     sourceLabel: "آراء من فلكستوك مصر",
     sourceCta: "اقرأ المزيد من آراء العملاء",
     sourceHref: "https://www.google.com/search?q=Flextock+Head+Office",
@@ -658,6 +710,14 @@ export const supportingPages = {
   },
   technology: {
     ...technologyContent,
+    title: "See the work. Connect the tools.",
+    description:
+      "Bring storefronts, warehouses, couriers, and finance workflows into one product view, with the detail your team needs to act.",
+    capabilityDetails: [
+      "Know what is available, moving, and at risk before it affects the customer.",
+      "Compare courier performance and act on delivery exceptions from one view.",
+      "Turn order, inventory, and return activity into decisions your team can act on.",
+    ],
     sections: [
       {
         eyebrow: "Live control",
@@ -878,20 +938,27 @@ export const supportingCtaContent = {
 } satisfies Record<Locale, { eyebrow: string; title: string }>;
 
 export const ctaContent = {
-  eyebrow: "Let’s build what’s next",
-  title: "Turn operational complexity into momentum.",
+  eyebrow: "Final step",
+  title: "The room you started in was never the limit.",
   description:
-    "Tell us where your business is going. We’ll show you how Flextock can help you get there.",
-  cta: "Request pricing",
+    "Tell us where you want your brand to be a year from now. We'll show you what it takes to get there.",
+  cta: "Talk to our team",
+  secondaryCta: "See how it works",
+  secondaryHref: "#system",
 };
 
 export const quotePage = {
-  eyebrow: "Start a conversation",
-  title: "Request pricing built around your operation.",
-  description:
-    "Share a few details about your business. Our team will recommend the right operating model, scope, and next step.",
-  proofPoints: ["One connected operating layer", "Flexible service scope", "Built for MENA growth"],
-  submitLabel: "Request pricing",
+  eyebrow: "Start your journey",
+  title: "Start your journey.",
+  formTitle: "Request a quote or demo",
+  description: "",
+  proofPoints: [
+    "Increase your sales by 5x",
+    "99.9% successful delivery rate",
+    "10–15% faster delivery",
+    "3 active operations in key MENA markets you can be a part of.",
+  ],
+  submitLabel: "Submit",
   submittingLabel: "Sending request...",
   backLabel: "Back to homepage",
   successTitle: "Your request is on its way.",
@@ -899,41 +966,55 @@ export const quotePage = {
     "A member of the Flextock team will be in touch shortly.",
   responseNote: "We usually respond during the next business day.",
   privacyLabel: "I agree to Flextock using these details to respond to my request.",
-  businessNeedLabel: "What would you like to solve?",
-  businessNeedPlaceholder: "Tell us briefly about your operation",
+  businessNeedLabel: "Additional notes",
+  businessNeedPlaceholder: "Anything else we should know",
   fields: {
-    name: { label: "Full name", placeholder: "Your name" },
-    brand: { label: "Brand name", placeholder: "Your brand" },
-    phone: { label: "Phone number", placeholder: "+20 000 000 0000" },
+    name: { label: "Name", placeholder: "Your name" },
+    brand: { label: "Company name", placeholder: "Your company" },
+    phone: { label: "Phone", placeholder: "+20 000 000 0000" },
     industry: { label: "Industry", placeholder: "Select your industry" },
-    volume: { label: "Daily order volume", placeholder: "Select your volume" },
-    interest: { label: "Interested in", placeholder: "Select a solution" },
-    tax: { label: "Tax card and commercial registration", placeholder: "Select an option" },
-    businessType: { label: "Business type", placeholder: "Select your business type" },
+    volume: { label: "Order volume", placeholder: "Select your volume" },
+    interest: { label: "I am interested in", placeholder: "Select a solution" },
+    tax: { label: "Do you have a tax card and commercial registration?", placeholder: "Select an option" },
+    businessType: { label: "Company type", placeholder: "Select your company type" },
     sellingMethod: { label: "How do you sell?", placeholder: "Select your main channel" },
     referral: { label: "How did you hear about us?", placeholder: "Select an option" },
-    email: { label: "Work email", placeholder: "you@company.com" },
+    email: { label: "Email", placeholder: "you@company.com" },
+    role: { label: "Job title", placeholder: "Your role" },
+    website: { label: "Website or social link", placeholder: "If you don't have a website, leave a social link" },
+    discountCode: { label: "Discount code (if any)", placeholder: "Optional code" },
   },
   taxOptions: ["Yes", "No"],
-  industries: ["Fashion", "Beauty", "Grocery", "Electronics", "Other"],
+  industries: [
+    "Beauty",
+    "Perfume",
+    "Clothing",
+    "Home supplies",
+    "Books",
+    "Toys",
+    "Electronics",
+    "Furniture",
+    "Food",
+    "Famous products",
+    "Other",
+  ],
   volumes: ["0–50 orders", "51–250 orders", "251–1,000 orders", "1,000+ orders"],
-  businessTypes: ["Brand", "Affiliate", "Marketplace"],
+  businessTypes: ["Brand", "Affiliate", "Store"],
   sellingMethods: ["Social media page", "Website", "Other"],
-  referralSources: ["Google", "Instagram / Facebook", "Snapchat", "Referral", "Exhibition", "Other"],
+  referralSources: ["Google", "Snapchat", "Instagram / Facebook", "Referral", "Exhibition"],
   interests: [
-    "End to End Fulfillment",
-    "Flexship",
-    "Flexborders",
-    "Flexshops",
-    "Flexcash",
+    "Full operation (storage, shipping, collection)",
+    "Delivery only",
+    "Expand to KSA",
+    "International shipping",
   ],
 };
 
 export const arabicCopy = {
   site: {
     logoAlt: "فلكستوك",
-    primaryCta: "اطلب تسعيرًا",
-    secondaryCta: "اكتشف المنصة",
+    primaryCta: "تحدث مع فريقنا",
+    secondaryCta: "شاهد كيف يعمل",
     menuLabel: "افتح القائمة",
     closeMenuLabel: "أغلق القائمة",
     mainNavLabel: "القائمة الرئيسية",
@@ -959,10 +1040,15 @@ export const arabicCopy = {
     ],
   },
   hero: {
-    eyebrow: "بنية التجارة للعلامات النامية",
-    title: "اجعل تشغيل كل طلب أسهل.",
-    description: "تجمع فلكستوك عمليات التنفيذ والتوصيل والمخزون والنقد في عملية واحدة واضحة ومسؤولة.",
-    supportingText: "ابدأ بالخدمة التي تحتاجها، وأضف التالية عندما يصبح عملك جاهزًا.",
+    eyebrow: "تمكين التجارة الإلكترونية للعلامات في مصر والسعودية",
+    title: "علامتك التجارية، أكبر مما كانت!",
+    description:
+      "فلكستوك تخزّن مخزونك، وتشحن كل طلب، وتحصّل أموالك، وتنقل علامتك إلى السعودية، كل ذلك من لوحة تحكم واحدة. تستعيد وقتك للجزء الذي لا يستطيع أحد غيرك القيام به.",
+    trustStrip: [
+      "بدعم من TLcom Capital",
+      "موثوق بها من أكثر من 2500 علامة",
+      "9 ملايين طلب تم تنفيذه",
+    ],
   },
   heroSignals: [
     {
@@ -983,61 +1069,63 @@ export const arabicCopy = {
   ],
   video: {
     eyebrow: "داخل فلكستوك",
-    title: "شاهد ما يحدث بين الطلب والتوصيل.",
-    description: "نظرة قصيرة على الأشخاص والعمليات والتكنولوجيا التي تحافظ على حركة التجارة.",
+    title: "كل ما يحدث بين انشاء الطلب واستلام العميل له.",
+    description: "تعرف على الأشخاص والأنظمة والتكنولوجيا التي وراء نجاحنا.",
     source: "/videos/Flextock v04.mp4",
     poster: "/pictures/2 copy 10.png",
     label: "فيديو تعريفي عن فلكستوك",
   },
   showcase: {
-    eyebrow: "كيف تعمل العملية",
-    title: "الإشارة الصحيحة في الوقت المناسب.",
-    description: "من مخاطر المخزون إلى استثناءات التوصيل، تحصل الفرق على المعلومات قبل أن تتحول المشكلة الصغيرة إلى تكلفة كبيرة.",
+    eyebrow: "كيف تعمل إدارة التشغيل المدعومة بالتكنولوجيا؟",
+    title: "الإشارات المناسبة في الوقت المناسب.",
+    description: "نظام فلكستوك يخبرك أنت وفريقك كل ما تحتاجه لإدارة أي تعطل بسرعة وبسهولة.",
     systemLabel: "نظام فلكستوك",
     signalLabel: "إشارة تشغيلية",
+    visualPendingLabel: "الصورة التشغيلية قيد التجهيز",
+    visualPendingNote: "استبدل هذا الإطار بتصوير حقيقي حتى لا يبدو القسم مولدًا بالذكاء الاصطناعي.",
   },
   journeySteps: [
     {
-      label: "طبقة تشغيل موحدة",
-      title: "أبعد من التنفيذ",
-      description: "فلكستوك هي نظام تشغيل التجارة الإلكترونية للتنفيذ والتوصيل فقط والتوسع عبر الحدود، وكل ذلك من بوابة موحدة.",
-      visualLabel: "عملية متصلة",
+      label: "ذكاء إدارة التشغيل",
+      title: "أكثر مما تحتاج",
+      description: "سهولة التشغيل والتوصيل وحتى النمو عبر الحدود في منصة واحدة موحدة.",
+      visualLabel: "بوابة موحدة",
       visualValue: "1",
-      visualUnit: "بوابة موحدة",
+      visualUnit: "إدارة مترابطة",
       visualBars: [38, 52, 46, 68, 58, 78, 72, 88],
     },
     {
-      label: "ذكاء المخزون",
+      label: "ذكاء إدارة المخزون",
       title: "التنبؤ بالعرض والطلب",
-      description: "توقف عن التخمين. تحسب لوحة التحكم معدلات دوران المنتجات والأيام المتبقية لحظيًا، وتنبهك للمخزون المعرض للخطر قبل خسارة المبيعات.",
-      visualLabel: "معدل دوران المنتج",
-      visualValue: "مباشر",
-      visualUnit: "أيام متبقية",
+      description: "نظام ذكي يحسب معدل أداء وحدة حفظ المخزون ليخبرك بأي مخزون يحتاج اهتمامك مسبقًا.",
+      visualLabel: "تحديثات مباشرة",
+      visualValue: "SKU",
+      visualUnit: "معدل الأداء",
       visualBars: [82, 76, 68, 58, 50, 42, 34, 28],
     },
     {
-      label: "التحكم في مخاطر الدفع",
-      title: "اتخذ القرار قبل الشحن.",
-      description: "افحص طلبات الدفع عند الاستلام مقابل أنماط عدم الاستلام المعروفة قبل الشحن، ليحصل فريقك على أساس واضح لاتخاذ القرار.",
-      visualLabel: "تم رصد مخاطر الدفع",
-      visualValue: "خطر",
-      visualUnit: "عملاء تم رصدهم",
+      label: "إدارة مخاطر الدفع عند الاستلام",
+      title: "إدارة المخاطر قبل إرسال الطلب",
+      description: "أنظمة فحص شاملة لطلبات الدفع عند الاستلام تلاحظ أنماط العملاء السلوكية قبل إرسال أي طلبات لتقليل أي مخاطرة بدلًا من حلها مستقبلًا.",
+      visualLabel: "مخاطرات مُدارة",
+      visualValue: "COD",
+      visualUnit: "طلبات مفحوصة",
       visualBars: [24, 30, 28, 44, 36, 62, 48, 70],
     },
     {
       label: "اللوجستيات العكسية",
       title: "لوجستيات عكسية شفافة",
-      description: "امنح كل مرتجع حالة واضحة: إعادة تغليف، فحص الأجزاء الناقصة، أو تسجيله كخردة، لتظل المنتجات القابلة للبيع وغير القابلة للبيع واضحة ومسؤولة.",
-      visualLabel: "تم تصنيف المرتجعات",
+      description: "تصنيف والتحقق من المنتجات المرتجعة للتفرقة بين الممكن إعادة بيعه أو التالف بشفافية.",
+      visualLabel: "تصنيف المرتجعات",
       visualValue: "RTM",
-      visualUnit: "تصنيف",
+      visualUnit: "لكل مرتجع",
       visualBars: [72, 64, 58, 48, 42, 36, 30, 24],
     },
   ],
   solutionPage: {
-    eyebrow: "حل من فلكستوك",
-    cta: "تحدث مع فريقنا",
-    howItWorks: "كيف تعمل",
+    eyebrow: "احد حلول فلكستوك",
+    cta: "تحدث مع فريقنا اليوم",
+    howItWorks: "كيف يعمل؟",
   },
   solutionsOverview: {
     eyebrow: "الحلول",
@@ -1088,23 +1176,23 @@ export const arabicCopy = {
       ],
     },
     flexborders: {
-      title: "خذ منتجاتك الأفضل إلى أسواق المنطقة.",
-      intro: "ادخل أسواقًا جديدة مع رؤية تشغيلية لإدارة الطلبات والشركاء وتوقعات العملاء.",
+      title: "ابدأ في بيع منتجاتك المفضلة في جميع أنحاء الشرق الأوسط.",
+      intro: "ادخل السوق السعودي بثقة: إدارة تشغيل منظمة للشحن عبر الحدود وأوراق التخليص الجمركي وضمان تحقيق توقعات عملائك.",
       problem: {
         eyebrow: "فجوة التوسع",
-        title: "الأسواق الجديدة يجب أن تعني نموًا، لا تخمينًا.",
-        description: "توفر فلكستوك الأساس التشغيلي للتوسع بوضوح أكبر في المخزون والتوصيل والتحصيل.",
+        title: "اصبح التوسع لأسواق جديدة ملئ بالنمو والثقة.",
+        description: "فلكستوك تساعدك في تنسيق عمليات التشغيل ومتطلبات الأوراق الرسمية لتساعدك في التوسع بسهولة.",
       },
       outcomes: [
-        { value: "MENA", label: "جاهز للتوسع" },
-        { value: "طبقة واحدة", label: "للعمليات العابرة للحدود" },
-        { value: "قرارات أوضح", label: "للتكلفة النهائية" },
+        { value: "MENA", label: "استعداد تام للتوسع في الشرق الأوسط" },
+        { value: "منصة واحدة", label: "وعملية واحدة للتوسع عبر الحدود." },
+        { value: "قرارات تكلفة", label: "واضحة وشفافة" },
       ],
       steps: [
-        { title: "اختر السوق المناسب", description: "رتّب الأسواق حسب الإشارات التجارية والتشغيلية." },
-        { title: "اربط الطلب", description: "أدخل المتاجر ومصادر الطلب الجديدة في سير عمل مألوف." },
-        { title: "نفّذ محليًا", description: "نسّق المخزون والتوصيل حول سوق العميل." },
-        { title: "توسع بإشارة واضحة", description: "اعرف ما ينجح قبل استثمار رأس مال إضافي." },
+        { title: "اختر سوقك القادم للتوسع", description: "حدد أولوية السوق الذي تود التوسع إليه" },
+        { title: "ربط الطلب", description: "ابدأ الأوراق وربط كل ما تحتاجه" },
+        { title: "ابدأ التشغيل المحلي", description: "ابدأ في السوق الذي يعرفك لتظهر بقوة" },
+        { title: "توسع بمرونة وراحة", description: "تمتع بالنمو الذي تستحقه بدون توتر" },
       ],
     },
     flexshops: {
@@ -1160,27 +1248,28 @@ export const arabicCopy = {
     ],
   },
   technology: {
-    eyebrow: "مصمم للاتصال",
-    title: "شاهد العمل واربط أدواتك.",
-    description: "اجمع المتاجر والمستودعات وشركات الشحن والعمليات المالية في رؤية واحدة، مع التفاصيل التي يحتاجها فريقك للتصرف.",
-    capabilities: ["تحكم في المخزون", "تحكم في التوصيل", "تحكم في الاستثناءات"],
+    eyebrow: "مصمم لسهولة الترابط",
+    title: "اربط كل الأدوات التي تحتاجها بمنصة واحدة.",
+    description: "ترابط سلس يضمن ألا يفوتك شئ.",
+    capabilities: ["التحكم في المخزون", "التحكم في التوصيل", "التحكم في الاستثناءات"],
     capabilityDetails: [
-      "اعرف ما هو متاح وما يتحرك وما هو معرض للخطر قبل أن يؤثر على العميل.",
-      "قارن أداء شركات الشحن وتعامل مع استثناءات التوصيل من رؤية واحدة.",
-      "حوّل نشاط الطلبات والمخزون والمرتجعات إلى قرارات عملية لفريقك.",
+      "تابع المخزون المتاح وما يتم توصيله وتنبأ بأية مشاكل قبل أن يلاحظها عملائك.",
+      "تابع التوصيل والطلبات التي في التوصيل، والطلبات الموصلة، وحتى المرتجعات في وقت حصولها.",
+      "تابع كل التفاصيل فيما يتعلق بالإدارة المالية والتكنولوجيا والآمان من نفس لوحة التحكم.",
     ],
     integrations: ["المتاجر", "الأسواق", "شركات الشحن", "عمليات المستودع", "العمليات المالية", "الوصول عبر API"],
     integrationsLabel: "اربط ما يعمل بالفعل",
     integrationsNote: "تختلف الاتصالات المتاحة حسب السوق ونطاق الخدمة ونموذج التشغيل.",
+    cta: "استكشف المنصة",
   },
   network: {
-    eyebrow: "خيارات التوصيل",
-    title: "امنح العميل نهاية أفضل.",
-    description: "استخدم مستوى الخدمة المناسب لكل طلب، من التوصيل في نفس اليوم إلى اختيار ما يحتفظ به العميل عند الباب.",
+    eyebrow: "تجارب التوصيل",
+    title: "قدم لعملائك الخدمة التي يستحقونها.",
+    description: "قدم مستوى الخدمة الذي يلائم طلباتك مثل التوصيل في نفس اليوم وحتى تجربة المشتريات عند التوصيل.",
     points: [
-      { value: "عرض واحد", label: "للطلبات والمخزون والتوصيل والمرتجعات" },
-      { value: "نفس اليوم", label: "للتوصيل عندما يتطلب وعد العميل ذلك" },
-      { value: "اختيار", label: "لتجربة أكثر مرونة عند الباب" },
+      { value: "منصة واحدة، رؤية موحدة", label: "كل ما تحتاج متابعته من الطلبات والمخزون حتى التوصيل والمرتجعات." },
+      { value: "توصيل في نفس اليوم", label: "يوافق احتياجات عملائك والطلبات عندك." },
+      { value: "تجربة المشتريات", label: "تجربة تسوق مخصصة تصل عملائك في بيوتهم." },
     ],
   },
   pages: {
@@ -1244,49 +1333,79 @@ export const arabicCopy = {
     },
   },
   cta: {
-    eyebrow: "لنبنِ ما هو قادم",
-    title: "حوّل التعقيد التشغيلي إلى زخم.",
-    description: "أخبرنا إلى أين يتجه عملك، وسنوضح لك كيف تساعدك فلكستوك على الوصول.",
-    cta: "اطلب تسعيرًا",
+    eyebrow: "الخطوة الأخيرة",
+    title: "الغرفة التي بدأت فيها لم تكن يومًا الحد.",
+    description:
+      "أخبرنا أين تريد علامتك بعد عام من الآن. وسنريك ما يلزم للوصول.",
+    cta: "تحدث مع فريقنا",
+    secondaryCta: "شاهد كيف يعمل",
+    secondaryHref: "#system",
   },
   footer: {
-    description: "نظام تشغيل التجارة الإلكترونية للعلامات الطموحة في منطقة الشرق الأوسط وشمال أفريقيا.",
+    description: "Greater than before.",
     copyright: "© 2026 فلكستوك. جميع الحقوق محفوظة.",
+    signOff: "أكبر مما كانت.",
   },
   quote: {
-    eyebrow: "ابدأ محادثة",
-    title: "اطلب تسعيرًا يناسب عملياتك.",
-    description: "شاركنا بعض التفاصيل عن عملك، وسيرشح لك فريقنا نموذج التشغيل والنطاق والخطوة التالية المناسبة.",
-    proofPoints: ["طبقة تشغيل واحدة متصلة", "نطاق خدمة مرن", "مصمم للنمو في المنطقة"],
-    submitLabel: "اطلب تسعيرًا",
+    eyebrow: "ابدأ رحلتك اليوم",
+    title: "ابدأ رحلتك اليوم.",
+    formTitle: "طلب عرض أسعار أو عرض توضيحي",
+    description: "",
+    proofPoints: [
+      "زود مبيعاتك حتى خمسة أضعاف",
+      "نسبة توصيل ناجحة ٩٩.٩٪",
+      "توصيل أسرع بنسبة ١٠٪ إلى ١٥٪",
+      "تواجد قوي في ٣ دول يمكنك التوسع إليهم في الشرق الأوسط",
+    ],
+    submitLabel: "تسجيل",
     submittingLabel: "جارٍ إرسال الطلب...",
     backLabel: "العودة إلى الصفحة الرئيسية",
     successTitle: "تم إرسال طلبك.",
     successDescription: "سيتواصل معك أحد أعضاء فريق فلكستوك قريبًا.",
     responseNote: "نرد عادة خلال يوم العمل التالي.",
     privacyLabel: "أوافق على استخدام فلكستوك لهذه البيانات للرد على طلبي.",
-    businessNeedLabel: "ما الذي تريد حله؟",
-    businessNeedPlaceholder: "أخبرنا باختصار عن عملياتك",
+    businessNeedLabel: "أية ملحوظات إضافية",
+    businessNeedPlaceholder: "أضف أي تفاصيل إضافية",
     fields: {
-      name: { label: "الاسم بالكامل", placeholder: "اسمك" },
-      brand: { label: "اسم العلامة التجارية", placeholder: "علامتك التجارية" },
+      name: { label: "الاسم", placeholder: "اسمك" },
+      brand: { label: "اسم الشركة", placeholder: "شركتك" },
       phone: { label: "رقم الهاتف", placeholder: "+20 000 000 0000" },
       industry: { label: "المجال", placeholder: "اختر مجالك" },
-      volume: { label: "حجم الطلبات اليومي", placeholder: "اختر حجم الطلبات" },
-      interest: { label: "مهتم بـ", placeholder: "اختر الحل" },
-      tax: { label: "البطاقة الضريبية والسجل التجاري", placeholder: "اختر إجابة" },
-      businessType: { label: "نوع النشاط", placeholder: "اختر نوع النشاط" },
-      sellingMethod: { label: "كيف تبيع؟", placeholder: "اختر قناتك الرئيسية" },
-      referral: { label: "كيف سمعت عنا؟", placeholder: "اختر إجابة" },
-      email: { label: "البريد الإلكتروني للعمل", placeholder: "you@company.com" },
+      volume: { label: "كمية الطلبات", placeholder: "اختر حجم الطلبات" },
+      interest: { label: "أنا مهتم بـ", placeholder: "اختر الحل" },
+      tax: { label: "هل لديك بطاقة تجارية وسجل تجاري؟", placeholder: "اختر إجابة" },
+      businessType: { label: "نوع الشركة", placeholder: "اختر نوع الشركة" },
+      sellingMethod: { label: "طريقة البيع", placeholder: "اختر قناتك الرئيسية" },
+      referral: { label: "كيف سمعت عننا؟", placeholder: "اختر إجابة" },
+      email: { label: "البريد الإلكتروني", placeholder: "you@company.com" },
+      role: { label: "وظيفة المسجل", placeholder: "وظيفتك" },
+      website: { label: "رابط الموقع", placeholder: "إذا ليس لديك موقع، اترك رابطًا لأحد مواقع التواصل الإجتماعي" },
+      discountCode: { label: "كود الخصم (إن وجد)", placeholder: "اختياري" },
     },
     taxOptions: ["نعم", "لا"],
-    industries: ["الأزياء", "التجميل", "البقالة", "الإلكترونيات", "أخرى"],
+    industries: [
+      "التجميل",
+      "العطور",
+      "الملابس",
+      "مستلزمات منزلية",
+      "الكتب",
+      "الألعاب",
+      "الإلكترونيات",
+      "الأثاث",
+      "الأطعمة",
+      "منتجات مشهورة",
+      "مجال آخر",
+    ],
     volumes: ["0–50 طلبًا", "51–250 طلبًا", "251–1,000 طلب", "أكثر من 1,000 طلب"],
-    businessTypes: ["علامة تجارية", "مسوق بالعمولة", "سوق إلكتروني"],
-    sellingMethods: ["صفحة على وسائل التواصل", "موقع إلكتروني", "أخرى"],
-    referralSources: ["Google", "Instagram / Facebook", "Snapchat", "ترشيح", "معرض", "أخرى"],
-    interests: ["التنفيذ من البداية للنهاية", "تجميع التوصيل", "التجارة العابرة للحدود", "Flexshops", "Flexcash"],
+    businessTypes: ["علامة تجارية", "شركة تابعة", "متجر"],
+    sellingMethods: ["صفحة إلكترونية", "موقع", "غيرهم"],
+    referralSources: ["جوجل", "سنابشات", "انستاجرام أو فيسبوك", "إحالة", "معرض"],
+    interests: [
+      "تشغيل كامل (تخزين وشحن وتحصيل)",
+      "توصيل فقط",
+      "توسع للسعودية",
+      "شحن دولي",
+    ],
   },
 };
 
@@ -1327,7 +1446,18 @@ localizedSolutionDetails.sales = {
 };
 
 export const footerContent = {
-  description:
-    "The E-commerce Operating System for ambitious brands across MENA.",
-  copyright: "© 2025 Flextock. All rights reserved.",
+  description: "Greater than before.",
+  copyright: "© 2026 Flextock. All rights reserved.",
+  signOff: "Greater than before.",
 };
+
+export {
+  engineContent,
+  systemContent,
+  proofContent,
+  brandMarkContent,
+  howToStartContent,
+  heroContentAr,
+} from "./marketing-home";
+
+export { flexbordersPage } from "./marketing-flexborders";
