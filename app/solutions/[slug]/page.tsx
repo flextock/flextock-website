@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { FlexbordersPageContent } from "@/components/FlexbordersPageContent";
 import { SolutionPageContent } from "@/components/SolutionPageContent";
 import { solutionCards, solutionDetails } from "@/constants";
 
@@ -38,6 +39,10 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
 
   if (!solution) {
     notFound();
+  }
+
+  if (solution.slug === "cross-border-trade") {
+    return <FlexbordersPageContent />;
   }
 
   return <SolutionPageContent slug={solution.slug} />;

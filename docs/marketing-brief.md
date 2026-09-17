@@ -1,5 +1,15 @@
 # Website copy/design — what we still need from you (Home, Flexborders, Form)
 
+## New homepage / Flexborders — AR needs review
+
+English homepage and Flexborders copy from the latest marketing brief is live. Arabic for those pages was **drafted by engineering** in the same voice for review — please approve or rewrite:
+
+- Homepage: Hero, The Engine, Inside the System, Proof (stats + testimonials), The X, How to Start, Final CTA / footer sign-off
+- Flexborders: full page (hero, gap, handles, why, how it works, engine blurb, FAQ, final CTA)
+- Visible `[verify]` / `[للتأكيد]` markers remain on Flexship coverage, settlement terms, FAQ timeline, and FAQ payment
+
+---
+
 Hi team — we reviewed the Miro board ([board](https://miro.com/app/board/uXjVHn21WPM=/)). English notes update the English site. Arabic notes update the Arabic site. Visitors see one language at a time.
 
 Yellow notes = new copy. Purple notes = visuals. Please reply on the numbered items.

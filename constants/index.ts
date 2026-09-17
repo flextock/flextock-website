@@ -26,8 +26,8 @@ export const siteConfig = {
   solutionsOverviewLabel: "View all solutions",
   playVideoLabel: "Play video",
   pauseVideoLabel: "Pause video",
-  primaryCta: "Get Quote",
-  secondaryCta: "Explore our System",
+  primaryCta: "Talk to our team",
+  secondaryCta: "See how it works",
   contactHref: "/quote",
   contactEmail: "info@flextock.com",
 };
@@ -96,11 +96,15 @@ export const navigation = {
 };
 
 export const heroContent = {
-  eyebrow: "Commerce infrastructure for growing brands",
-  title: "The system built to help your business grow.",
+  eyebrow: "E-Commerce Enablement for brands in Egypt and Saudi Arabia",
+  title: "Your Brand, Greater than before!",
   description:
-    "Managing your operations has never been easier. Flextock manages your fulfillment, storage, delivery, and more with one inclusive system.",
-  supportingText: "Built for growth with a grow-as-you-go mindset.",
+    "Flextock stores your stock, ships every order, collects your cash, and takes your brand to Saudi Arabia, all from one dashboard. You get your time back for the part only you can do.",
+  trustStrip: [
+    "Backed by TLcom Capital",
+    "Trusted by 2500+ brands",
+    "9M Orders Fulfilled",
+  ],
 };
 
 export const heroSignals = [
@@ -934,11 +938,13 @@ export const supportingCtaContent = {
 } satisfies Record<Locale, { eyebrow: string; title: string }>;
 
 export const ctaContent = {
-  eyebrow: "Let's build for what's next.",
-  title: "Turn the complex operations into a superpower.",
+  eyebrow: "Final step",
+  title: "The room you started in was never the limit.",
   description:
-    "Tell us what your dreams are. We'll show you how Flextock will get you there.",
-  cta: "Get Quote",
+    "Tell us where you want your brand to be a year from now. We'll show you what it takes to get there.",
+  cta: "Talk to our team",
+  secondaryCta: "See how it works",
+  secondaryHref: "#system",
 };
 
 export const quotePage = {
@@ -1007,8 +1013,8 @@ export const quotePage = {
 export const arabicCopy = {
   site: {
     logoAlt: "فلكستوك",
-    primaryCta: "احصل على عرض اسعار",
-    secondaryCta: "استكشف نظامنا",
+    primaryCta: "تحدث مع فريقنا",
+    secondaryCta: "شاهد كيف يعمل",
     menuLabel: "افتح القائمة",
     closeMenuLabel: "أغلق القائمة",
     mainNavLabel: "القائمة الرئيسية",
@@ -1034,10 +1040,15 @@ export const arabicCopy = {
     ],
   },
   hero: {
-    eyebrow: "بنية التجارة للعلامات النامية",
-    title: "نظام مبني ليساعد شركتك في النمو.",
-    description: "إدارة التشغيل أصبحت أسهل مما تتخيل. فلكستوك تدير التخزين والشحن والتوصيل والتحصيل وأكثر بنظام واحد شامل.",
-    supportingText: "مبني ليساعدك على النمو على مدار رحلتك.",
+    eyebrow: "تمكين التجارة الإلكترونية للعلامات في مصر والسعودية",
+    title: "علامتك التجارية، أكبر مما كانت!",
+    description:
+      "فلكستوك تخزّن مخزونك، وتشحن كل طلب، وتحصّل أموالك، وتنقل علامتك إلى السعودية، كل ذلك من لوحة تحكم واحدة. تستعيد وقتك للجزء الذي لا يستطيع أحد غيرك القيام به.",
+    trustStrip: [
+      "بدعم من TLcom Capital",
+      "موثوق بها من أكثر من 2500 علامة",
+      "9 ملايين طلب تم تنفيذه",
+    ],
   },
   heroSignals: [
     {
@@ -1322,14 +1333,18 @@ export const arabicCopy = {
     },
   },
   cta: {
-    eyebrow: "استعد لتبني للمستقبل.",
-    title: "حول تعقيد عمليات التشغيل لقوة خارقة.",
-    description: "اخبرنا عن أحلامك، وسنريك كيف سنساعدك في تحقيقها.",
-    cta: "احصل على عرض اسعار",
+    eyebrow: "الخطوة الأخيرة",
+    title: "الغرفة التي بدأت فيها لم تكن يومًا الحد.",
+    description:
+      "أخبرنا أين تريد علامتك بعد عام من الآن. وسنريك ما يلزم للوصول.",
+    cta: "تحدث مع فريقنا",
+    secondaryCta: "شاهد كيف يعمل",
+    secondaryHref: "#system",
   },
   footer: {
-    description: "نظام تشغيل التجارة الإلكترونية للعلامات الطموحة في منطقة الشرق الأوسط وشمال أفريقيا.",
+    description: "Greater than before.",
     copyright: "© 2026 فلكستوك. جميع الحقوق محفوظة.",
+    signOff: "أكبر مما كانت.",
   },
   quote: {
     eyebrow: "ابدأ رحلتك اليوم",
@@ -1431,7 +1446,18 @@ localizedSolutionDetails.sales = {
 };
 
 export const footerContent = {
-  description:
-    "The E-commerce Operating System for ambitious brands across MENA.",
-  copyright: "© 2025 Flextock. All rights reserved.",
+  description: "Greater than before.",
+  copyright: "© 2026 Flextock. All rights reserved.",
+  signOff: "Greater than before.",
 };
+
+export {
+  engineContent,
+  systemContent,
+  proofContent,
+  brandMarkContent,
+  howToStartContent,
+  heroContentAr,
+} from "./marketing-home";
+
+export { flexbordersPage } from "./marketing-flexborders";
