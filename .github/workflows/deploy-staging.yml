@@ -47,5 +47,20 @@ jobs:
       - name: Deploy App Hosting
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
-        # Pin CLI: newer versions may try to create firebase-app-hosting-compute SA and fail with limited CI roles.
-        run: npx firebase-tools@14.9.0 deploy --only apphosting:flextock-website-stg --project flextockdevelopment --non-interactive
+        run: |
+          set -euo pipefail
+          echo "Deploying backend flextock-website-stg to project flextockdevelopment..."
+          npx firebase-tools@14.27.0 deploy \
+            --only apphosting:flextock-website-stg \
+            --project flextockdevelopment \
+            --non-interactive \
+            --force | tee "${RUNNER_TEMP}/firebase-deploy.log"
+          if grep -Eiq 'skipping|no apphosting|nothing to deploy' "${RUNNER_TEMP}/firebase-deploy.log"; then
+            echo "::error::Firebase reported a skipped/empty App Hosting deploy. Check backend id flextock-website-stg exists in flextockdevelopment."
+            exit 1
+          fi
+          if ! grep -Eiq 'apphosting|Deploy complete|uploaded|rollout' "${RUNNER_TEMP}/firebase-deploy.log"; then
+            echo "::error::Deploy finished without App Hosting confirmation in the logs."
+            exit 1
+          fi
+          echo "Deploy step finished."
