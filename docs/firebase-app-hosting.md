@@ -15,7 +15,10 @@ Both projects must be on the **Blaze** plan (App Hosting uses Cloud Build + Clou
 
 ## Deploy from GitHub Actions (primary)
 
-Workflow: [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml)
+Workflows:
+
+- [`.github/workflows/deploy-staging.yml`](../.github/workflows/deploy-staging.yml) — push to `staging`
+- [`.github/workflows/deploy-live.yml`](../.github/workflows/deploy-live.yml) — push to `master`
 
 ```
 push / merge → staging  → lint + build + firebase deploy → flextockdevelopment

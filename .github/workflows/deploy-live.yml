@@ -1,0 +1,51 @@
+name: Deploy live
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-live
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy master → cosmic-tenure-290110
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Write Firebase credentials
+        env:
+          FIREBASE_SERVICE_ACCOUNT_LIVE: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIVE }}
+        run: |
+          if [ -z "$FIREBASE_SERVICE_ACCOUNT_LIVE" ]; then
+            echo "::error::Missing secret FIREBASE_SERVICE_ACCOUNT_LIVE (JSON key for project cosmic-tenure-290110)."
+            exit 1
+          fi
+          echo "$FIREBASE_SERVICE_ACCOUNT_LIVE" > "${RUNNER_TEMP}/firebase-sa.json"
+
+      - name: Deploy App Hosting
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
+        # Pin CLI: newer versions may try to create firebase-app-hosting-compute SA and fail with limited CI roles.
+        run: npx firebase-tools@14.9.0 deploy --only apphosting:flextock-website --project cosmic-tenure-290110 --non-interactive

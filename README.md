@@ -15,7 +15,10 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy
 
-Firebase **App Hosting** via GitHub Actions (`.github/workflows/deploy.yml`).
+Firebase **App Hosting** via GitHub Actions:
+
+- `.github/workflows/deploy-staging.yml` → `staging`
+- `.github/workflows/deploy-live.yml` → `master`
 
 | Branch | Environment | Firebase project | Backend ID | Secret |
 |--------|-------------|------------------|------------|--------|
