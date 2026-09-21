@@ -1,6 +1,18 @@
 {
   "apphosting": [
     {
+      "backendId": "flextock-website-stg",
+      "rootDir": "/",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions"
+      ],
+      "alwaysDeployFromSource": true
+    },
+    {
       "backendId": "flextock-website",
       "rootDir": "/",
       "ignore": [

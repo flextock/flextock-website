@@ -4,10 +4,10 @@ Repo: [flextock/flextock-website](https://github.com/flextock/flextock-website)
 
 ## Environments
 
-| Git branch | Firebase alias | Project ID | App Hosting env name | Config | GitHub secret |
-|---|---|---|---|---|---|
-| `staging` | `dev` | `flextockdevelopment` | `staging` | `apphosting.staging.yaml` | `FIREBASE_SERVICE_ACCOUNT_DEV` |
-| `master` | `live` | `cosmic-tenure-290110` | `production` | `apphosting.production.yaml` | `FIREBASE_SERVICE_ACCOUNT_LIVE` |
+| Git branch | Firebase alias | Project ID | Backend ID | App Hosting env name | Config | GitHub secret |
+|---|---|---|---|---|---|---|
+| `staging` | `dev` | `flextockdevelopment` | `flextock-website-stg` | `staging` | `apphosting.staging.yaml` | `FIREBASE_SERVICE_ACCOUNT_DEV` |
+| `master` | `live` | `cosmic-tenure-290110` | `flextock-website` | `production` | `apphosting.production.yaml` | `FIREBASE_SERVICE_ACCOUNT_LIVE` |
 
 These match [`.firebaserc`](../.firebaserc).
 
@@ -24,7 +24,10 @@ push / merge → master   → lint + build + firebase deploy → cosmic-tenure-2
 
 PRs still use [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (`lint` + `build` only).
 
-Deploy uses `firebase deploy --only apphosting` (source upload). The App Hosting backend id is `flextock-website` (see `firebase.json`).
+Deploy uses `firebase deploy --only apphosting:<backendId>` (source upload):
+
+- staging → `apphosting:flextock-website-stg`
+- master → `apphosting:flextock-website`
 
 ### One-time: GitHub secrets
 
@@ -42,12 +45,12 @@ Org path: [flextock/flextock-website secrets](https://github.com/flextock/flexto
 
 ### One-time: App Hosting backend per project
 
-First deploy can create/use backend `flextock-website`. Prefer creating it once in the console so env names and region are set:
+First deploy can create/use the backends below. Prefer creating them once in the console so env names and region are set:
 
 #### Dev (`flextockdevelopment`)
 
 1. Open [App Hosting](https://console.firebase.google.com/project/flextockdevelopment/apphosting)
-2. Create backend id **`flextock-website`** (must match `firebase.json`)
+2. Create backend id **`flextock-website-stg`** (must match `firebase.json`)
 3. Prefer **source / CLI** deployment (not required to connect GitHub if CI deploys)
 4. Environment name: **`staging`**
 5. Region: e.g. `europe-west4`

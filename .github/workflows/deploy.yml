@@ -50,7 +50,7 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
         # Pin CLI: newer versions may try to create firebase-app-hosting-compute SA and fail with limited CI roles.
-        run: npx firebase-tools@14.9.0 deploy --only apphosting --project flextockdevelopment --non-interactive
+        run: npx firebase-tools@14.9.0 deploy --only apphosting:flextock-website-stg --project flextockdevelopment --non-interactive
 
   deploy-live:
     if: github.ref == 'refs/heads/master'
@@ -89,4 +89,4 @@ jobs:
       - name: Deploy App Hosting
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
-        run: npx firebase-tools@14.9.0 deploy --only apphosting --project cosmic-tenure-290110 --non-interactive
+        run: npx firebase-tools@14.9.0 deploy --only apphosting:flextock-website --project cosmic-tenure-290110 --non-interactive
