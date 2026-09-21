@@ -4,72 +4,85 @@ Repo: [flextock/flextock-website](https://github.com/flextock/flextock-website)
 
 ## Environments
 
-| Git branch | Firebase alias | Project ID | App Hosting env name | Config |
-|---|---|---|---|---|
-| `staging` | `dev` | `flextock-4373e` | `staging` | `apphosting.staging.yaml` |
-| `master` | `live` | `cosmic-tenure-290110` | `production` | `apphosting.production.yaml` |
+| Git branch | Firebase alias | Project ID | App Hosting env name | Config | GitHub secret |
+|---|---|---|---|---|---|
+| `staging` | `dev` | `flextockdevelopment` | `staging` | `apphosting.staging.yaml` | `FIREBASE_SERVICE_ACCOUNT_DEV` |
+| `master` | `live` | `cosmic-tenure-290110` | `production` | `apphosting.production.yaml` | `FIREBASE_SERVICE_ACCOUNT_LIVE` |
 
-Project IDs come from the existing Flextock landing-page Firebase setup. Confirm they are the intended **dev** / **live** projects for this site (update `.firebaserc` if not).
+These match [`.firebaserc`](../.firebaserc).
 
 Both projects must be on the **Blaze** plan (App Hosting uses Cloud Build + Cloud Run).
 
-## Deploy-on-merge (automatic)
+## Deploy from GitHub Actions (primary)
 
-Deploy is **not** a custom GitHub Actions deploy job. Firebase App Hosting rolls out when the backend’s live branch receives a push/merge:
+Workflow: [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml)
 
 ```
-feature → PR → staging  → auto deploy DEV
-staging → PR → master   → auto deploy LIVE
+push / merge → staging  → lint + build + firebase deploy → flextockdevelopment
+push / merge → master   → lint + build + firebase deploy → cosmic-tenure-290110
 ```
 
-PR quality gate: `.github/workflows/ci.yml` runs `lint` + `build` on PRs into `staging` and `master`.
+PRs still use [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (`lint` + `build` only).
 
-## One-time console setup (required)
+Deploy uses `firebase deploy --only apphosting` (source upload). The App Hosting backend id is `flextock-website` (see `firebase.json`).
 
-Do this once per Firebase project after the repo lives at `flextock/flextock-website`.
+### One-time: GitHub secrets
 
-### A. Dev project (`flextock-4373e`)
+For each Firebase project, create a GCP service account JSON key and add it as a repo secret:
 
-1. Open [Firebase console](https://console.firebase.google.com/) → project `flextock-4373e`.
-2. Go to **App Hosting** → **Get started** / **Create backend**.
-3. Connect GitHub (Developer Connect) → grant the Firebase GitHub App access to **`flextock/flextock-website`**.
-4. Backend settings:
-   - Root directory: `/`
-   - Live branch: **`staging`**
-   - Automatic rollouts: **On**
-   - Environment name: **`staging`** (must match `apphosting.staging.yaml`)
-   - Region: pick closest to users (e.g. `europe-west4` or `me-west1` if available)
-5. Create / finish first rollout. Save the `*.hosted.app` URL.
+1. GCP Console → IAM → Service Accounts → Create (e.g. `github-apphosting-deploy`)
+2. Grant at least:
+   - Firebase Admin (`roles/firebase.admin`) **or** a tighter set that includes App Hosting / Cloud Build / Cloud Run / Storage / Artifact Registry as needed for App Hosting source deploy
+   - Service Account User on the App Hosting compute SA (if already created)
+3. Create a JSON key → GitHub → **Settings → Secrets and variables → Actions**:
+   - Dev project → secret name **`FIREBASE_SERVICE_ACCOUNT_DEV`** (full JSON)
+   - Live project → secret name **`FIREBASE_SERVICE_ACCOUNT_LIVE`** (full JSON)
 
-### B. Live project (`cosmic-tenure-290110`)
+Org path: [flextock/flextock-website secrets](https://github.com/flextock/flextock-website/settings/secrets/actions)
 
-Same steps with:
+### One-time: App Hosting backend per project
 
-- Live branch: **`master`**
+First deploy can create/use backend `flextock-website`. Prefer creating it once in the console so env names and region are set:
+
+#### Dev (`flextockdevelopment`)
+
+1. Open [App Hosting](https://console.firebase.google.com/project/flextockdevelopment/apphosting)
+2. Create backend id **`flextock-website`** (must match `firebase.json`)
+3. Prefer **source / CLI** deployment (not required to connect GitHub if CI deploys)
+4. Environment name: **`staging`**
+5. Region: e.g. `europe-west4`
+
+#### Live (`cosmic-tenure-290110`)
+
+Same with:
+
+- Backend id: **`flextock-website`**
 - Environment name: **`production`**
-- Automatic rollouts: **On**
 
-### C. After backends exist
+If automatic GitHub rollouts were enabled earlier, turn them **off** so only CI deploys (avoids double rollouts).
 
-1. Merge or push a commit that includes `apphosting*.yaml` so both backends pick up env configs.
-2. Watch rollouts in Firebase → App Hosting → backend → Rollouts (also surfaces as a GitHub check).
-3. Optional later: attach custom domains (staging subdomain + `www.flextock.com`) under each backend’s domain settings.
-
-## CLI notes
+### Trigger a deploy
 
 ```bash
-npm i -g firebase-tools
-firebase login
-firebase use dev    # flextock-4373e
-firebase use live   # cosmic-tenure-290110
+git push origin staging   # → Deploy workflow (dev)
+git push origin master    # → Deploy workflow (live)
 ```
 
-App Hosting backends are primarily managed in the console / `firebase apphosting:` CLI; day-to-day deploys still happen via Git push to `staging` / `master`.
+Or **Actions → Deploy → Run workflow**.
 
-## Smoke checklist (after first rollouts)
+## Local CLI (optional)
 
-- [ ] `/` hero + engine + system + proof sections
-- [ ] `/solutions/cross-border-trade` Flexborders page
+```bash
+npm i -g firebase-tools@14.9.0
+firebase login
+firebase use dev    # flextockdevelopment
+firebase deploy --only apphosting --non-interactive
+```
+
+## Smoke checklist (after first successful Deploy run)
+
+- [ ] Actions → Deploy job is green
+- [ ] App Hosting rollout succeeded in Firebase console
+- [ ] `/` and `/solutions/cross-border-trade` load on the `*.hosted.app` URL
 - [ ] Locale toggle EN / AR
-- [ ] Footer dual CTAs (Talk to our team / See how it works)
-- [ ] Staging URL reflects `staging` merges; live URL reflects `master` merges
+- [ ] Footer dual CTAs

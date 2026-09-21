@@ -15,18 +15,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy
 
-Production deploys use **Firebase App Hosting** (not Vercel).
+Firebase **App Hosting** via GitHub Actions (`.github/workflows/deploy.yml`).
 
-| Branch | Environment | Firebase project |
-|--------|-------------|------------------|
-| `staging` | Dev | `flextock-4373e` |
-| `master` | Live | `cosmic-tenure-290110` |
+| Branch | Environment | Firebase project | Secret |
+|--------|-------------|------------------|--------|
+| `staging` | Dev | `flextockdevelopment` | `FIREBASE_SERVICE_ACCOUNT_DEV` |
+| `master` | Live | `cosmic-tenure-290110` | `FIREBASE_SERVICE_ACCOUNT_LIVE` |
 
-- Merge to `staging` → automatic App Hosting rollout (dev)
-- Merge to `master` → automatic App Hosting rollout (live)
-- PRs into those branches run CI (`lint` + `build`) via `.github/workflows/ci.yml`
+- Push/merge to `staging` or `master` → lint + build + `firebase deploy --only apphosting`
+- PRs → CI only (`.github/workflows/ci.yml`)
 
-Full setup (console backends, environment names, smoke checklist): [docs/firebase-app-hosting.md](docs/firebase-app-hosting.md).
+Setup (secrets, backend id `flextock-website`, smoke checklist): [docs/firebase-app-hosting.md](docs/firebase-app-hosting.md).
 
 ## Scripts
 
