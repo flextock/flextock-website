@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "flextockdevelopment",
+    "dev": "flextockdevelopment",
+    "live": "cosmic-tenure-290110"
+  },
+  "targets": {},
+  "etags": {}
+}

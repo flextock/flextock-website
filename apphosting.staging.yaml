@@ -1,0 +1,16 @@
+# Staging / Firebase DEV — live branch: staging
+# Set backend Environment name to "staging" in the Firebase console.
+
+runConfig:
+  cpu: 1
+  memoryMiB: 512
+  concurrency: 40
+  maxInstances: 4
+  minInstances: 0
+
+env:
+  - variable: NEXT_PUBLIC_SITE_ENV
+    value: staging
+    availability:
+      - BUILD
+      - RUNTIME
