@@ -1,94 +1,56 @@
-# Firebase App Hosting setup
+# Firebase Hosting deploy (merchant-ui pattern)
 
 Repo: [flextock/flextock-website](https://github.com/flextock/flextock-website)
 
+This site deploys like **merchant-ui**: static build → classic **Firebase Hosting** with Workload Identity Federation (no JSON service-account secrets).
+
 ## Environments
 
-| Git branch | Firebase alias | Project ID | Backend ID | App Hosting env name | Config | GitHub secret |
-|---|---|---|---|---|---|---|
-| `staging` | `dev` | `flextockdevelopment` | `flextock-website-stg` | `staging` | `apphosting.staging.yaml` | `FIREBASE_SERVICE_ACCOUNT_DEV` |
-| `master` | `live` | `cosmic-tenure-290110` | `flextock-website` | `production` | `apphosting.production.yaml` | `FIREBASE_SERVICE_ACCOUNT_LIVE` |
+| Branch | Workflow | Firebase project | Hosting site | Auth |
+|--------|----------|------------------|--------------|------|
+| `staging` | `deploy-staging.yml` | `flexdevelopment` | `flextock-website-stg` | WIF → `github-deploy-gcloud-workflow@flexdevelopment.iam.gserviceaccount.com` |
+| `master` | `deploy-live.yml` | `cosmic-tenure-290110` | `flextock-website` | WIF → `flextock-project-deployments@cosmic-tenure-290110.iam.gserviceaccount.com` |
 
-These match [`.firebaserc`](../.firebaserc).
+Same WIF pools / deploy SAs as merchant-ui.
 
-Both projects must be on the **Blaze** plan (App Hosting uses Cloud Build + Cloud Run).
+## One-time setup
 
-## Deploy from GitHub Actions (primary)
-
-Workflows:
-
-- [`.github/workflows/deploy-staging.yml`](../.github/workflows/deploy-staging.yml) — push to `staging`
-- [`.github/workflows/deploy-live.yml`](../.github/workflows/deploy-live.yml) — push to `master`
-
-```
-push / merge → staging  → lint + build + firebase deploy → flextockdevelopment
-push / merge → master   → lint + build + firebase deploy → cosmic-tenure-290110
-```
-
-PRs still use [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (`lint` + `build` only).
-
-Deploy uses `firebase deploy --only apphosting:<backendId>` (source upload):
-
-- staging → `apphosting:flextock-website-stg`
-- master → `apphosting:flextock-website`
-
-### One-time: GitHub secrets
-
-For each Firebase project, create a GCP service account JSON key and add it as a repo secret:
-
-1. GCP Console → IAM → Service Accounts → Create (e.g. `github-apphosting-deploy`)
-2. Grant at least:
-   - Firebase Admin (`roles/firebase.admin`) **or** a tighter set that includes App Hosting / Cloud Build / Cloud Run / Storage / Artifact Registry as needed for App Hosting source deploy
-   - Service Account User on the App Hosting compute SA (if already created)
-3. Create a JSON key → GitHub → **Settings → Secrets and variables → Actions**:
-   - Dev project → secret name **`FIREBASE_SERVICE_ACCOUNT_DEV`** (full JSON)
-   - Live project → secret name **`FIREBASE_SERVICE_ACCOUNT_LIVE`** (full JSON)
-
-Org path: [flextock/flextock-website secrets](https://github.com/flextock/flextock-website/settings/secrets/actions)
-
-### One-time: App Hosting backend per project
-
-First deploy can create/use the backends below. Prefer creating them once in the console so env names and region are set:
-
-#### Dev (`flextockdevelopment`)
-
-1. Open [App Hosting](https://console.firebase.google.com/project/flextockdevelopment/apphosting)
-2. Create backend id **`flextock-website-stg`** (must match `firebase.json`)
-3. Prefer **source / CLI** deployment (not required to connect GitHub if CI deploys)
-4. Environment name: **`staging`**
-5. Region: e.g. `europe-west4`
-
-#### Live (`cosmic-tenure-290110`)
-
-Same with:
-
-- Backend id: **`flextock-website`**
-- Environment name: **`production`**
-
-If automatic GitHub rollouts were enabled earlier, turn them **off** so only CI deploys (avoids double rollouts).
-
-### Trigger a deploy
+### 1. Create Hosting sites (if missing)
 
 ```bash
-git push origin staging   # → Deploy workflow (dev)
-git push origin master    # → Deploy workflow (live)
+npx firebase-tools@13 hosting:sites:create flextock-website-stg --project flexdevelopment
+npx firebase-tools@13 hosting:sites:create flextock-website --project cosmic-tenure-290110
 ```
 
-Or **Actions → Deploy → Run workflow**.
+Or Firebase Console → Hosting → Add site.
 
-## Local CLI (optional)
+### 2. Allow this repo on Workload Identity
+
+If deploy fails with WIF / `Unable to acquire impersonated credentials` / attribute condition errors, an org admin must allow **`flextock/flextock-website`** on the same GitHub→GCP pools used by merchant-ui (same as other Flextock UI repos).
+
+### 3. No GitHub secrets required for Firebase
+
+Unlike App Hosting JSON keys, Hosting deploy uses OIDC (`id-token: write`) + `google-github-actions/auth@v2`.
+
+(`FIREBASE_SERVICE_ACCOUNT_DEV` / `_LIVE` are unused and can be deleted.)
+
+## How deploy works
+
+1. `npm run build` → Next.js `output: "export"` writes static files to `out/`
+2. `firebase deploy --only hosting:<site> --project <project>` uploads `out/` (same as merchant-ui’s `dist/…`)
+
+## Local deploy (optional)
 
 ```bash
-npm i -g firebase-tools@14.9.0
-firebase login
-firebase use dev    # flextockdevelopment
-firebase deploy --only apphosting --non-interactive
+npm ci
+npm run build
+npx firebase-tools@13 login
+npx firebase-tools@13 deploy --only hosting:flextock-website-stg --project flexdevelopment
 ```
 
-## Smoke checklist (after first successful Deploy run)
+## Smoke checklist
 
-- [ ] Actions → Deploy job is green
-- [ ] App Hosting rollout succeeded in Firebase console
-- [ ] `/` and `/solutions/cross-border-trade` load on the `*.hosted.app` URL
+- [ ] Actions → **Deploy staging** green
+- [ ] Site opens on the Firebase Hosting URL for `flextock-website-stg`
+- [ ] `/` and `/solutions/cross-border-trade` work
 - [ ] Locale toggle EN / AR
-- [ ] Footer dual CTAs

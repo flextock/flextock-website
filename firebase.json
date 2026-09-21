@@ -1,28 +1,76 @@
 {
-  "apphosting": [
+  "hosting": [
     {
-      "backendId": "flextock-website-stg",
-      "rootDir": "/",
+      "site": "flextock-website-stg",
+      "public": "out",
       "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "functions"
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
       ],
-      "alwaysDeployFromSource": true
+      "redirects": [
+        {
+          "source": "/solutions/cross-boarder-trade",
+          "destination": "/solutions/cross-border-trade",
+          "type": 301
+        }
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(js|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "**/*.html",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ]
     },
     {
-      "backendId": "flextock-website",
-      "rootDir": "/",
+      "site": "flextock-website",
+      "public": "out",
       "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "functions"
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
       ],
-      "alwaysDeployFromSource": true
+      "redirects": [
+        {
+          "source": "/solutions/cross-boarder-trade",
+          "destination": "/solutions/cross-border-trade",
+          "type": 301
+        }
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(js|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000, immutable"
+            }
+          ]
+        },
+        {
+          "source": "**/*.html",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

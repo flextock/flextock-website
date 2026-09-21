@@ -11,13 +11,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Deploy staging → flextockdevelopment
+  build:
+    name: Staging → Build & Deploy to Firebase Hosting
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,36 +33,14 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Build
+      - name: Build static site
         run: npm run build
 
-      - name: Write Firebase credentials
-        env:
-          FIREBASE_SERVICE_ACCOUNT_DEV: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}
-        run: |
-          if [ -z "$FIREBASE_SERVICE_ACCOUNT_DEV" ]; then
-            echo "::error::Missing secret FIREBASE_SERVICE_ACCOUNT_DEV (JSON key for project flextockdevelopment)."
-            exit 1
-          fi
-          echo "$FIREBASE_SERVICE_ACCOUNT_DEV" > "${RUNNER_TEMP}/firebase-sa.json"
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: "projects/695078373719/locations/global/workloadIdentityPools/github-cloudrun-deploy/providers/github"
+          service_account: "github-deploy-gcloud-workflow@flexdevelopment.iam.gserviceaccount.com"
 
-      - name: Deploy App Hosting
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
-        run: |
-          set -euo pipefail
-          echo "Deploying backend flextock-website-stg to project flextockdevelopment..."
-          npx firebase-tools@14.27.0 deploy \
-            --only apphosting:flextock-website-stg \
-            --project flextockdevelopment \
-            --non-interactive \
-            --force | tee "${RUNNER_TEMP}/firebase-deploy.log"
-          if grep -Eiq 'skipping|no apphosting|nothing to deploy' "${RUNNER_TEMP}/firebase-deploy.log"; then
-            echo "::error::Firebase reported a skipped/empty App Hosting deploy. Check backend id flextock-website-stg exists in flextockdevelopment."
-            exit 1
-          fi
-          if ! grep -Eiq 'apphosting|Deploy complete|uploaded|rollout' "${RUNNER_TEMP}/firebase-deploy.log"; then
-            echo "::error::Deploy finished without App Hosting confirmation in the logs."
-            exit 1
-          fi
-          echo "Deploy step finished."
+      - name: Deploy to Firebase Hosting
+        run: npx firebase-tools@13 deploy --only hosting:flextock-website-stg --project flexdevelopment --non-interactive
