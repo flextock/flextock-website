@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "flexdevelopment",
+    "dev": "flexdevelopment",
+    "staging": "flexdevelopment",
+    "live": "cosmic-tenure-290110",
+    "prod": "cosmic-tenure-290110"
+  }
+}

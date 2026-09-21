@@ -10,11 +10,20 @@ import { useEffect, useRef, useState } from "react";
 import { arabicCopy, localeConfig, navigation, siteConfig } from "@/constants";
 import { useLocale } from "@/components/LocaleProvider";
 
+type MenuState = {
+  path: string;
+  mobile: boolean;
+  solutions: boolean;
+};
+
 export function GlobalNavbar() {
   const { locale, setLocale } = useLocale();
   const pathname = usePathname();
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [menuState, setMenuState] = useState<MenuState>({
+    path: pathname,
+    mobile: false,
+    solutions: false,
+  });
   const solutionsMenuRef = useRef<HTMLDivElement>(null);
   const copy = locale === "ar" ? arabicCopy.site : siteConfig;
   const primaryNavigation =
@@ -22,11 +31,29 @@ export function GlobalNavbar() {
   const solutions =
     locale === "ar" ? arabicCopy.navigation.solutions : navigation.solutions;
   const isSolutionsRoute = pathname.startsWith("/solutions");
+  // Path change closes menus without setState-in-effect (CI lint).
+  const isMobileOpen = menuState.path === pathname && menuState.mobile;
+  const isSolutionsOpen = menuState.path === pathname && menuState.solutions;
 
-  useEffect(() => {
-    setIsMobileOpen(false);
-    setIsSolutionsOpen(false);
-  }, [pathname]);
+  function closeMenus() {
+    setMenuState({ path: pathname, mobile: false, solutions: false });
+  }
+
+  function toggleSolutions() {
+    setMenuState((current) => ({
+      path: pathname,
+      mobile: false,
+      solutions: !(current.path === pathname && current.solutions),
+    }));
+  }
+
+  function toggleMobile() {
+    setMenuState((current) => ({
+      path: pathname,
+      mobile: !(current.path === pathname && current.mobile),
+      solutions: false,
+    }));
+  }
 
   useEffect(() => {
     if (!isMobileOpen) {
@@ -52,14 +79,13 @@ export function GlobalNavbar() {
         solutionsMenuRef.current &&
         !solutionsMenuRef.current.contains(event.target as Node)
       ) {
-        setIsSolutionsOpen(false);
+        setMenuState({ path: pathname, mobile: false, solutions: false });
       }
     }
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setIsSolutionsOpen(false);
-        setIsMobileOpen(false);
+        setMenuState({ path: pathname, mobile: false, solutions: false });
       }
     }
 
@@ -70,7 +96,7 @@ export function GlobalNavbar() {
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isMobileOpen, isSolutionsOpen]);
+  }, [isMobileOpen, isSolutionsOpen, pathname]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-flextock-line bg-flextock-navy/95">
@@ -97,7 +123,7 @@ export function GlobalNavbar() {
               aria-expanded={isSolutionsOpen}
               aria-haspopup="menu"
               aria-controls="solutions-menu"
-              onClick={() => setIsSolutionsOpen((open) => !open)}
+              onClick={toggleSolutions}
               className={`flex items-center gap-1.5 text-sm transition-colors hover:text-flextock-foreground ${
                 isSolutionsRoute
                   ? "text-flextock-foreground"
@@ -126,7 +152,7 @@ export function GlobalNavbar() {
                   <Link
                     href="/solutions"
                     role="menuitem"
-                    onClick={() => setIsSolutionsOpen(false)}
+                    onClick={closeMenus}
                     className="mb-2 flex items-center justify-between border-b border-flextock-line px-4 py-3 text-sm font-medium text-flextock-neon"
                   >
                     {copy.solutionsOverviewLabel}
@@ -138,7 +164,7 @@ export function GlobalNavbar() {
                         key={solution.slug}
                         href={`/solutions/${solution.slug}`}
                         role="menuitem"
-                        onClick={() => setIsSolutionsOpen(false)}
+                        onClick={closeMenus}
                         className="group rounded-xl p-4 transition-colors hover:bg-white/5"
                       >
                         <span className="flex items-center justify-between text-sm font-medium text-flextock-foreground">
@@ -199,7 +225,7 @@ export function GlobalNavbar() {
           }
           aria-expanded={isMobileOpen}
           aria-controls="mobile-navigation"
-          onClick={() => setIsMobileOpen((open) => !open)}
+          onClick={toggleMobile}
           className="rounded-full border border-flextock-line p-2 text-flextock-foreground lg:hidden"
         >
           {isMobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -221,7 +247,7 @@ export function GlobalNavbar() {
               </span>
               <Link
                 href="/solutions"
-                onClick={() => setIsMobileOpen(false)}
+                onClick={closeMenus}
                 className="rounded-lg px-3 py-3 text-sm font-medium text-flextock-neon"
               >
                 {copy.solutionsOverviewLabel}
@@ -230,7 +256,7 @@ export function GlobalNavbar() {
                 <Link
                   key={solution.slug}
                   href={`/solutions/${solution.slug}`}
-                  onClick={() => setIsMobileOpen(false)}
+                  onClick={closeMenus}
                   className="rounded-lg px-3 py-3 ps-5 text-sm text-flextock-foreground"
                 >
                   {solution.name}
@@ -241,7 +267,7 @@ export function GlobalNavbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  onClick={() => setIsMobileOpen(false)}
+                  onClick={closeMenus}
                   className="rounded-lg px-3 py-3 text-sm text-flextock-muted"
                 >
                   {item.label}
@@ -249,7 +275,7 @@ export function GlobalNavbar() {
               ))}
               <Link
                 href="/quote"
-                onClick={() => setIsMobileOpen(false)}
+                onClick={closeMenus}
                 className="mt-3 flex min-h-11 w-full items-center justify-center gap-2 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy"
               >
                 {copy.primaryCta}
