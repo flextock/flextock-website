@@ -98,6 +98,9 @@ export const navigation = {
 export const heroContent = {
   eyebrow: "E-Commerce Enablement for brands in Egypt and Saudi Arabia",
   title: "Your Brand, Greater than before!",
+  titlePrefix: "Your Brand, ",
+  titleHighlight: "Greater than",
+  titleSuffix: " before!",
   description:
     "Flextock stores your stock, ships every order, collects your cash, and takes your brand to Saudi Arabia, all from one dashboard. You get your time back for the part only you can do.",
   trustStrip: [
@@ -1042,6 +1045,9 @@ export const arabicCopy = {
   hero: {
     eyebrow: "تمكين التجارة الإلكترونية للعلامات في مصر والسعودية",
     title: "علامتك التجارية، أكبر مما كانت!",
+    titlePrefix: "علامتك التجارية، ",
+    titleHighlight: "أكبر مما",
+    titleSuffix: " كانت!",
     description:
       "فلكستوك تخزّن مخزونك، وتشحن كل طلب، وتحصّل أموالك، وتنقل علامتك إلى السعودية، كل ذلك من لوحة تحكم واحدة. تستعيد وقتك للجزء الذي لا يستطيع أحد غيرك القيام به.",
     trustStrip: [
@@ -1461,3 +1467,4 @@ export {
 } from "./marketing-home";
 
 export { flexbordersPage } from "./marketing-flexborders";
+export { serviceColors, type ServiceColorKey } from "./service-colors";
