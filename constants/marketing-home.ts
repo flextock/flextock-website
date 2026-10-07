@@ -3,6 +3,9 @@ type Locale = "en" | "ar";
 export const heroContent = {
   eyebrow: "E-Commerce Enablement for brands in Egypt and Saudi Arabia",
   title: "Your Brand, Greater than before!",
+  titlePrefix: "Your Brand, ",
+  titleHighlight: "Greater than",
+  titleSuffix: " before!",
   description:
     "Flextock stores your stock, ships every order, collects your cash, and takes your brand to Saudi Arabia, all from one dashboard. You get your time back for the part only you can do.",
   trustStrip: [
@@ -15,6 +18,9 @@ export const heroContent = {
 export const heroContentAr = {
   eyebrow: "تمكين التجارة الإلكترونية للعلامات في مصر والسعودية",
   title: "علامتك التجارية، أكبر مما كانت!",
+  titlePrefix: "علامتك التجارية، ",
+  titleHighlight: "أكبر مما",
+  titleSuffix: " كانت!",
   description:
     "فلكستوك تخزّن مخزونك، وتشحن كل طلب، وتحصّل أموالك، وتنقل علامتك إلى السعودية، كل ذلك من لوحة تحكم واحدة. تستعيد وقتك للجزء الذي لا يستطيع أحد غيرك القيام به.",
   trustStrip: [
@@ -27,119 +33,177 @@ export const heroContentAr = {
 export const engineContent = {
   en: {
     eyebrow: "The Engine",
-    title: "One partner behind every order.",
+    titleBefore: "One partner",
+    titleHighlight: "fulfilment",
+    titleAfter: " behind every order.",
     description:
-      "Switch on what you need, when you need it. Every service runs on the same account and the same dashboard, so nothing has to be stitched together.",
+      "\"One partner\" means core fulfilment: orders, packing, and shipping under one team. Verticals and tooling plug into the same account when you need them.",
     cta: "Find the right setup for your brand",
     ctaHref: "/solutions",
     comingSoon: "Coming soon",
-    cards: [
+    groups: [
       {
-        name: "Flextock",
-        label: "Fulfilment",
-        description:
-          "We receive your stock, store it, pick and pack every order, deliver it, collect the cash, and handle the returns. You follow all of it from one dashboard.",
-        href: "/solutions/end-to-end-fulfillment",
-        comingSoon: false,
+        id: "core",
+        title: "Core Operations",
+        subtitle: "One Partner",
+        cards: [
+          {
+            name: "Flextock",
+            label: "Integrated Fulfilment",
+            description:
+              "We receive your stock, store it, pick and pack every order, deliver it, collect the cash, and handle the returns. You follow all of it from one dashboard.",
+            href: "/solutions/end-to-end-fulfillment",
+            comingSoon: false,
+            colorKey: "fulfillment",
+          },
+        ],
       },
       {
-        name: "Flexship",
-        label: "Delivery across Egypt",
-        description:
-          "The right courier for every order, through one contract and one account. Same-day delivery for customers who won't wait. [verify coverage]",
-        href: "/solutions/delivery-aggregation",
-        comingSoon: false,
+        id: "verticals",
+        title: "Standalone Verticals",
+        subtitle: "Dedicated teams",
+        cards: [
+          {
+            name: "Flexship",
+            label: "Delivery across Egypt",
+            description:
+              "The right courier for every order, through one contract and one account. Same-day delivery for customers who won't wait. [verify coverage]",
+            href: "/solutions/delivery-aggregation",
+            comingSoon: false,
+            colorKey: "flexship",
+          },
+          {
+            name: "Flexborders",
+            label: "Selling into Saudi Arabia",
+            description:
+              "Sell to customers in KSA without opening a company there. We handle customs, paperwork, and local fulfilment, so an order from Riyadh runs as smoothly as one from Cairo.",
+            href: "/solutions/cross-border-trade",
+            comingSoon: false,
+            colorKey: "flexborders",
+          },
+          {
+            name: "Flexshops",
+            label: "Every sales channel",
+            description:
+              "List on marketplaces and social channels, then manage stock and orders from all of them in one place.",
+            href: "/solutions/sales",
+            comingSoon: true,
+            colorKey: "flexshops",
+          },
+          {
+            name: "Flexmart",
+            label: "Your own storefront",
+            description:
+              "Launch a store that's connected to your stock from the first day in KSA.",
+            href: null,
+            comingSoon: true,
+            colorKey: "flexmart",
+          },
+        ],
       },
       {
-        name: "Flexborders",
-        label: "Selling into Saudi Arabia",
-        description:
-          "Sell to customers in KSA without opening a company there. We handle customs, paperwork, and local fulfilment, so an order from Riyadh runs as smoothly as one from Cairo.",
-        href: "/solutions/cross-border-trade",
-        comingSoon: false,
-      },
-      {
-        name: "Flexshops",
-        label: "Every sales channel",
-        description:
-          "List on marketplaces and social channels, then manage stock and orders from all of them in one place.",
-        href: "/solutions/sales",
-        comingSoon: true,
-      },
-      {
-        name: "Flexmart",
-        label: "Your own storefront",
-        description:
-          "Launch a store that's connected to your stock from the first day in KSA.",
-        href: null,
-        comingSoon: true,
-      },
-      {
-        name: "Flexcash",
-        label: "Working capital",
-        description:
-          "Turn sales you've already made into cash you can use now, so your next production run doesn't wait on settlement.",
-        href: "/solutions/flexcash",
-        comingSoon: false,
+        id: "features",
+        title: "Features & Tooling",
+        subtitle: "No dedicated team",
+        cards: [
+          {
+            name: "Flexcash",
+            label: "Daily invoicing feature",
+            description:
+              "Turn sales you've already made into cash you can use now, so your next production run doesn't wait on settlement.",
+            href: "/solutions/flexcash",
+            comingSoon: false,
+            colorKey: "flexcash",
+          },
+        ],
       },
     ],
   },
   ar: {
     eyebrow: "المحرك",
-    title: "شريك واحد خلف كل طلب.",
+    titleBefore: "شريك واحد للتنفيذ",
+    titleHighlight: "المتكامل",
+    titleAfter: " خلف كل طلب.",
     description:
-      "فعّل ما تحتاجه حين تحتاجه. كل خدمة تعمل على نفس الحساب ونفس لوحة التحكم، فلا شيء يحتاج إلى الربط يدويًا.",
+      "\"شريك واحد\" يعني التنفيذ الأساسي: الطلبات والتعبئة والشحن تحت فريق واحد. أما العموديات والأدوات فتتصل بنفس الحساب عندما تحتاجها.",
     cta: "اعثر على الإعداد المناسب لعلامتك",
     ctaHref: "/solutions",
     comingSoon: "قريبًا",
-    cards: [
+    groups: [
       {
-        name: "Flextock",
-        label: "التنفيذ",
-        description:
-          "نستلم مخزونك ونخزّنه ونجهّز كل طلب ونوصّله ونحصّل النقد وندير المرتجعات. وتتابع ذلك كله من لوحة تحكم واحدة.",
-        href: "/solutions/end-to-end-fulfillment",
-        comingSoon: false,
+        id: "core",
+        title: "العمليات الأساسية",
+        subtitle: "شريك واحد",
+        cards: [
+          {
+            name: "Flextock",
+            label: "التنفيذ المتكامل",
+            description:
+              "نستلم مخزونك ونخزّنه ونجهّز كل طلب ونوصّله ونحصّل النقد وندير المرتجعات. وتتابع ذلك كله من لوحة تحكم واحدة.",
+            href: "/solutions/end-to-end-fulfillment",
+            comingSoon: false,
+            colorKey: "fulfillment",
+          },
+        ],
       },
       {
-        name: "Flexship",
-        label: "التوصيل في مصر",
-        description:
-          "شركة الشحن المناسبة لكل طلب، بعقد واحد وحساب واحد. توصيل في نفس اليوم للعملاء الذين لا ينتظرون. [للتأكيد: نطاق التغطية]",
-        href: "/solutions/delivery-aggregation",
-        comingSoon: false,
+        id: "verticals",
+        title: "عموديات مستقلة",
+        subtitle: "فرق مخصصة",
+        cards: [
+          {
+            name: "Flexship",
+            label: "التوصيل في مصر",
+            description:
+              "شركة الشحن المناسبة لكل طلب، بعقد واحد وحساب واحد. توصيل في نفس اليوم للعملاء الذين لا ينتظرون. [للتأكيد: نطاق التغطية]",
+            href: "/solutions/delivery-aggregation",
+            comingSoon: false,
+            colorKey: "flexship",
+          },
+          {
+            name: "Flexborders",
+            label: "البيع في السعودية",
+            description:
+              "بع لعملائك في السعودية دون فتح شركة هناك. نتولى الجمارك والأوراق والتنفيذ المحلي، فيصل طلب الرياض بسلاسة طلب القاهرة.",
+            href: "/solutions/cross-border-trade",
+            comingSoon: false,
+            colorKey: "flexborders",
+          },
+          {
+            name: "Flexshops",
+            label: "كل قنوات البيع",
+            description:
+              "اعرض منتجاتك على الأسواق وقنوات التواصل، ثم أدر المخزون والطلبات من مكان واحد.",
+            href: "/solutions/sales",
+            comingSoon: true,
+            colorKey: "flexshops",
+          },
+          {
+            name: "Flexmart",
+            label: "متجرك الخاص",
+            description:
+              "أطلق متجرًا متصلًا بمخزونك من اليوم الأول في السعودية.",
+            href: null,
+            comingSoon: true,
+            colorKey: "flexmart",
+          },
+        ],
       },
       {
-        name: "Flexborders",
-        label: "البيع في السعودية",
-        description:
-          "بع لعملائك في السعودية دون فتح شركة هناك. نتولى الجمارك والأوراق والتنفيذ المحلي، فيصل طلب الرياض بسلاسة طلب القاهرة.",
-        href: "/solutions/cross-border-trade",
-        comingSoon: false,
-      },
-      {
-        name: "Flexshops",
-        label: "كل قنوات البيع",
-        description:
-          "اعرض منتجاتك على الأسواق وقنوات التواصل، ثم أدر المخزون والطلبات من مكان واحد.",
-        href: "/solutions/sales",
-        comingSoon: true,
-      },
-      {
-        name: "Flexmart",
-        label: "متجرك الخاص",
-        description:
-          "أطلق متجرًا متصلًا بمخزونك من اليوم الأول في السعودية.",
-        href: null,
-        comingSoon: true,
-      },
-      {
-        name: "Flexcash",
-        label: "رأس المال العامل",
-        description:
-          "حوّل مبيعاتك التي تمت بالفعل إلى نقد تستخدمه الآن، حتى لا تنتظر دورة الإنتاج التالية التسوية.",
-        href: "/solutions/flexcash",
-        comingSoon: false,
+        id: "features",
+        title: "الميزات والأدوات",
+        subtitle: "بدون فريق مخصص",
+        cards: [
+          {
+            name: "Flexcash",
+            label: "ميزة الفوترة اليومية",
+            description:
+              "حوّل مبيعاتك التي تمت بالفعل إلى نقد تستخدمه الآن، حتى لا تنتظر دورة الإنتاج التالية التسوية.",
+            href: "/solutions/flexcash",
+            comingSoon: false,
+            colorKey: "flexcash",
+          },
+        ],
       },
     ],
   },

@@ -1,9 +1,9 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { FlextockArrow } from "@/components/FlextockArrow";
 import {
   arabicCopy,
   ctaContent,
@@ -46,7 +46,7 @@ export function SiteFooter() {
               className="group flex min-h-11 w-full items-center justify-center gap-3 bg-flextock-neon px-6 py-3.5 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground sm:w-fit"
             >
               {content.cta}
-              <ArrowRight
+              <FlextockArrow
                 size={16}
                 className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
               />

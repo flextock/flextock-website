@@ -1,12 +1,13 @@
 "use client";
 
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { FlextockArrow } from "@/components/FlextockArrow";
 import { arabicCopy, localeConfig, navigation, siteConfig } from "@/constants";
 import { useLocale } from "@/components/LocaleProvider";
 
@@ -156,7 +157,7 @@ export function GlobalNavbar() {
                     className="mb-2 flex items-center justify-between border-b border-flextock-line px-4 py-3 text-sm font-medium text-flextock-neon"
                   >
                     {copy.solutionsOverviewLabel}
-                    <ArrowUpRight size={15} />
+                    <FlextockArrow size={15} />
                   </Link>
                   <div className="grid grid-cols-2 gap-1">
                     {solutions.map((solution) => (
@@ -169,9 +170,9 @@ export function GlobalNavbar() {
                       >
                         <span className="flex items-center justify-between text-sm font-medium text-flextock-foreground">
                           {solution.name}
-                          <ArrowUpRight
+                          <FlextockArrow
                             size={15}
-                            className="text-flextock-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                            className="text-flextock-muted transition-transform group-hover:translate-x-0.5"
                           />
                         </span>
                         <span className="mt-2 block text-xs leading-5 text-flextock-muted">
@@ -207,7 +208,7 @@ export function GlobalNavbar() {
             className="flex items-center gap-2 bg-flextock-neon px-5 py-2.5 text-sm font-medium text-flextock-navy transition-colors hover:bg-flextock-foreground"
           >
             {copy.primaryCta}
-            <ArrowUpRight size={15} />
+            <FlextockArrow size={15} />
           </Link>
           <button
             type="button"
@@ -279,7 +280,7 @@ export function GlobalNavbar() {
                 className="mt-3 flex min-h-11 w-full items-center justify-center gap-2 bg-flextock-neon px-5 py-3 text-sm font-medium text-flextock-navy"
               >
                 {copy.primaryCta}
-                <ArrowUpRight size={15} />
+                <FlextockArrow size={15} />
               </Link>
               <button
                 type="button"
